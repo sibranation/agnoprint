@@ -1,0 +1,18 @@
+<header class="navbar">
+  <div class="brand">
+    <a routerLink="/" (click)="closeMenu()">
+      <div class="logo"><img src="/logo.png" /></div> Agnoprint
+    </a>
+  </div>
+  <nav class="nav-links" [class.active]="isMenuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Home</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+    <a routerLink="/books" routerLinkActive="active" (click)="closeMenu()">Books</a>
+    <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+  </nav>
+  <button class="mobile-menu-toggle" [class.active]="isMenuOpen" (click)="toggleMenu()" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
