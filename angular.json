@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "author-portfolio": {
+    "agnoprint": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "author-portfolio:build:production"
+              "buildTarget": "agnoprint:build:production"
             },
             "development": {
-              "buildTarget": "author-portfolio:build:development"
+              "buildTarget": "agnoprint:build:development"
             }
           },
           "defaultConfiguration": "development"
