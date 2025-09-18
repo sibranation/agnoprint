@@ -201,6 +201,10 @@ section {
   margin-top: 4rem;
 }
 
+.footer-section {
+  width: 100%;
+}
+
 .footer .footer-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -298,6 +302,7 @@ section {
 
 @media (max-width: 768px) {
   .footer .footer-content {
+    display: block;
     grid-template-columns: 1fr;
     gap: 2rem;
   }

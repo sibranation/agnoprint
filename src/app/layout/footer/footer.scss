@@ -41,6 +41,9 @@
   transition: transform 0.3s ease;
 }
 
+.footer-section {
+  width: 100%;
+}
 .social-links a:hover {
   transform: scale(1.1);
 }
@@ -106,6 +109,7 @@
 
 @media (max-width: 768px) {
   .footer-content {
+    display: block;
     grid-template-columns: 1fr;
     gap: 2rem;
   }
