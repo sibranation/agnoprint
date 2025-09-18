@@ -9,11 +9,6 @@
       }
     }
   ],
-  "functions": {
-    "src/pages/api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
