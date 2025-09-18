@@ -11,8 +11,6 @@
 /dist
 /reports
 TESTS-*.xml
-.classpath
-.settings
 .scannerwork
 newrelic_agent.log
 /log
