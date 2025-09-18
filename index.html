@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agnoprint</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <a href="#home" onclick="navigateTo('home'); closeMenu();">
+        <div class="logo"><img src="/logo.png" /></div> Agnoprint
+      </a>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home" onclick="navigateTo('home'); closeMenu();" class="nav-link" data-page="home">Home</a>
+      <a href="#about" onclick="navigateTo('about'); closeMenu();" class="nav-link" data-page="about">About</a>
+      <a href="#books" onclick="navigateTo('books'); closeMenu();" class="nav-link" data-page="books">Books</a>
+      <a href="#contact" onclick="navigateTo('contact'); closeMenu();" class="nav-link" data-page="contact">Contact</a>
+    </nav>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+      <section class="hero">
+        <div class="hero-content">
+          <div class="text">
+            <h1>Hi, I'm <span class="accent">Agung</span></h1>
+            <p>Bestselling author of contemporary fiction and narrative non-fiction. Exploring themes of identity, belonging, and the human experience through compelling stories.</p>
+            <div class="cta">
+              <a href="#books" onclick="navigateTo('books')" class="btn primary">Explore My Books</a>
+              <a href="#about" onclick="navigateTo('about')" class="btn">Learn More</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="placeholder-image"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-books">
+        <h2>Featured Books</h2>
+        <div class="books-grid">
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="/book-1.jpeg" alt="Echoes of Dawn Cover" />
+            </div>
+            <h3>Echoes of Dawn</h3>
+            <p>A luminous novel about memory, migration, and the meaning of home.</p>
+            <a href="#books" onclick="navigateTo('books')" class="btn small">Read More</a>
+          </article>
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="/book-2.jpeg" alt="Echoes of Dawn Cover" />
+            </div>
+            <h3>Maps for the Heart</h3>
+            <p>Intimate essays on creativity, grief, and finding your voice.</p>
+            <a href="#books" onclick="navigateTo('books')" class="btn small">Read More</a>
+          </article>
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="/book-1.jpeg" alt="Echoes of Dawn Cover" />
+            </div>
+            <h3>The Quiet River</h3>
+            <p>A taut literary thriller set against a fog-touched coastal town.</p>
+            <a href="#books" onclick="navigateTo('books')" class="btn small">Read More</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-preview">
+        <div class="about-content">
+          <div class="text">
+            <h2>About the Author</h2>
+            <p>Agung is an award-winning writer whose work explores identity, belonging, and the intersections of memory and place. With a background in journalism and literature, their stories weave intimate character portraits with vivid, cinematic worlds.</p>
+            <p>When not writing, Agung mentors emerging writers and speaks at festivals and universities about craft and the creative process.</p>
+            <a href="#about" onclick="navigateTo('about')" class="btn primary">Read Full Bio</a>
+          </div>
+          <div class="about-image">
+            <div class="placeholder-image"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonials">
+        <h2>What Readers Say</h2>
+        <div class="testimonials-grid">
+          <blockquote class="testimonial">
+            <p>"Agung's writing transported me to another world. The characters felt so real, and the themes resonated deeply."</p>
+            <cite>- Reader from Goodreads</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>"A masterful storyteller with incredible insight into the human condition."</p>
+            <cite>- Literary Review</cite>
+          </blockquote>
+          <blockquote class="testimonial">
+            <p>"Couldn't put it down! The prose is beautiful and the plot twists are unexpected."</p>
+            <cite>- Amazon Reviewer</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <h2>Let's Connect</h2>
+        <p>Interested in my work or want to collaborate? I'd love to hear from you.</p>
+        <a href="#contact" onclick="navigateTo('contact')" class="btn primary large">Get In Touch</a>
+      </section>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+      <section class="about">
+        <div class="about-header">
+          <div class="author-image">
+            <div class="placeholder-image"></div>
+          </div>
+          <div class="intro">
+            <h1>About Agung</h1>
+            <p class="tagline">Award-winning author of contemporary fiction and narrative non-fiction</p>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="bio">
+            <h2>My Story</h2>
+            <p>
+              Agung is an award-winning writer whose work explores identity, belonging, and the
+              intersections of memory and place. With a background in journalism and literature, their
+              stories weave intimate character portraits with vivid, cinematic worlds.
+            </p>
+            <p>
+              Born and raised in a multicultural environment, Agung's experiences have deeply influenced
+              their writing, bringing authenticity and depth to themes of cultural identity and personal
+              transformation. Their debut novel, "Echoes of Dawn," received critical acclaim and won
+              the prestigious Literary Prize for Emerging Voices.
+            </p>
+            <p>
+              When not writing, Agung mentors emerging writers and speaks at festivals and
+              universities about craft and the creative process. They believe in the power of stories
+              to bridge divides and foster understanding in our increasingly connected world.
+            </p>
+          </div>
+
+          <div class="achievements">
+            <h2>Achievements & Awards</h2>
+            <ul>
+              <li>🏆 Literary Prize for Emerging Voices (2023)</li>
+              <li>📚 Bestselling Author - "Echoes of Dawn"</li>
+              <li>🎤 Featured Speaker at International Writers' Conference</li>
+              <li>✍️ Published in 15+ literary magazines</li>
+              <li>🌟 Goodreads Choice Awards Nominee</li>
+            </ul>
+          </div>
+
+          <div class="interests">
+            <h2>Beyond Writing</h2>
+            <p>
+              Outside of writing, Agung enjoys hiking in nature, practicing mindfulness meditation,
+              and exploring world cuisines. They are passionate about supporting literacy programs
+              and volunteer regularly at local community centers.
+            </p>
+            <p>
+              "Writing is my vocation, but connecting with readers and fellow writers is my joy."
+              - Agung
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Books Page -->
+    <section id="books" class="page">
+      <section class="books">
+        <div class="books-header">
+          <h1>My Books</h1>
+          <p>Explore my collection of stories that explore the depths of human experience</p>
+        </div>
+
+        <div class="books-grid">
+          <article class="book-card featured">
+            <div class="book-cover"></div>
+            <div class="book-info">
+              <h3>Echoes of Dawn</h3>
+              <p class="genre">Contemporary Fiction</p>
+              <p>A luminous novel about memory, migration, and the meaning of home. Winner of the Literary Prize for Emerging Voices.</p>
+              <div class="book-details">
+                <span>📖 320 pages</span>
+                <span>⭐ 4.8/5 Goodreads</span>
+                <span>🏆 Award Winner</span>
+              </div>
+              <div class="book-links">
+                <a href="#" class="btn primary small">Buy Now</a>
+                <a href="#" class="btn small">Read Sample</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover"></div>
+            <div class="book-info">
+              <h3>Maps for the Heart</h3>
+              <p class="genre">Narrative Non-Fiction</p>
+              <p>Intimate essays on creativity, grief, and finding your voice in the chaos of modern life.</p>
+              <div class="book-details">
+                <span>📖 240 pages</span>
+                <span>⭐ 4.6/5 Goodreads</span>
+              </div>
+              <div class="book-links">
+                <a href="#" class="btn primary small">Buy Now</a>
+                <a href="#" class="btn small">Read Sample</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover"></div>
+            <div class="book-info">
+              <h3>The Quiet River</h3>
+              <p class="genre">Literary Thriller</p>
+              <p>A taut literary thriller set against a fog-touched coastal town where secrets refuse to stay buried.</p>
+              <div class="book-details">
+                <span>📖 280 pages</span>
+                <span>⭐ 4.7/5 Goodreads</span>
+              </div>
+              <div class="book-links">
+                <a href="#" class="btn primary small">Buy Now</a>
+                <a href="#" class="btn small">Read Sample</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card upcoming">
+            <div class="book-cover"></div>
+            <div class="book-info">
+              <h3>Whispers in the Wind</h3>
+              <p class="genre">Coming Soon</p>
+              <p>A collection of short stories exploring the unseen connections between strangers in a bustling city.</p>
+              <div class="book-details">
+                <span>📖 ~200 pages</span>
+                <span>📅 Spring 2025</span>
+              </div>
+              <div class="book-links">
+                <a href="#" class="btn small">Pre-order</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <section class="book-stats">
+          <h2>By the Numbers</h2>
+          <div class="stats-grid">
+            <div class="stat">
+              <div class="number">50K+</div>
+              <div class="label">Books Sold</div>
+            </div>
+            <div class="stat">
+              <div class="number">15+</div>
+              <div class="label">Countries Reached</div>
+            </div>
+            <div class="stat">
+              <div class="number">4.7</div>
+              <div class="label">Average Rating</div>
+            </div>
+            <div class="stat">
+              <div class="number">3</div>
+              <div class="label">Award Wins</div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+      <section class="contact">
+        <div class="contact-header">
+          <h1>Get In Touch</h1>
+          <p>I'd love to hear from you. Whether you have questions about my books, want to discuss writing, or are interested in collaboration opportunities.</p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form class="form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" placeholder="your.email@example.com" type="email" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input id="subject" placeholder="What's this about?" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="6" placeholder="Your message..." required></textarea>
+              </div>
+              <button type="submit" class="btn primary">Send Message</button>
+            </form>
+          </div>
+
+          <div class="contact-info">
+            <h2>Other Ways to Connect</h2>
+            <div class="info-item">
+              <div class="icon">📧</div>
+              <div>
+                <h3>Email</h3>
+                <p>agung@example.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon">📱</div>
+              <div>
+                <h3>Social Media</h3>
+                <p>Follow me for updates and behind-the-scenes content</p>
+                <div class="social-links">
+                  <a href="#" aria-label="Twitter">🐦 Twitter</a>
+                  <a href="#" aria-label="Instagram">📷 Instagram</a>
+                  <a href="#" aria-label="Goodreads">📚 Goodreads</a>
+                </div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon">📍</div>
+              <div>
+                <h3>Location</h3>
+                <p>Based in Jakarta, Indonesia</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon">📅</div>
+              <div>
+                <h3>Events</h3>
+                <p>Check my social media for upcoming book signings and speaking engagements</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Agung</h3>
+        <p>Award-winning author of contemporary fiction and narrative non-fiction. Exploring themes of identity, belonging, and the human experience.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">🐦 Twitter</a>
+          <a href="#" aria-label="Instagram">📷 Instagram</a>
+          <a href="#" aria-label="Goodreads">📚 Goodreads</a>
+          <a href="#" aria-label="LinkedIn">💼 LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
+          <li><a href="#about" onclick="navigateTo('about')">About</a></li>
+          <li><a href="#books" onclick="navigateTo('books')">Books</a></li>
+          <li><a href="#contact" onclick="navigateTo('contact')">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Stay Updated</h3>
+        <p>Subscribe to my newsletter for the latest book releases, writing updates, and exclusive content.</p>
+        <div class="newsletter">
+          <input type="email" placeholder="Your email" />
+          <button class="btn small">Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>©2025 Agung. All rights reserved.</p>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation and routing
+    let currentPage = 'home';
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function navigateTo(page) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Show selected page
+      document.getElementById(page).classList.add('active');
+      // Update URL hash
+      window.location.hash = page;
+      // Update active nav link
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === page) {
+          link.classList.add('active');
+        }
+      });
+      currentPage = page;
+      closeMenu();
+    }
+
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      navLinks.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      navLinks.classList.remove('active');
+      toggle.classList.remove('active');
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      // Simple form handling - in real app, you'd send to server
+      alert('Thank you for your message! I\'ll get back to you soon.');
+      event.target.reset();
+    }
+
+    // Handle initial load and hash changes
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1) || 'home';
+      navigateTo(hash);
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        navigateTo(hash);
+      }
+    });
+  </script>
+</body>
+</html>
