@@ -130,6 +130,26 @@
       margin-top: 8px;
       font-size: 0.98rem;
     }
+
+    /* Home hero gallery thumbnails */
+    .home-gallery {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: center;
+    }
+    .home-gallery img {
+      width: 140px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      .home-gallery { gap: 8px; }
+      .home-gallery img { width: 100px; height: 66px; }
+    }
   </style>
 </head>
 <body>
@@ -176,6 +196,10 @@
           <div class="hero-image">
             <div class="placeholder-image">
               <img src="agung.png" data-filename="agung.png" alt="Agung" />
+            </div>
+            <div class="home-gallery" aria-hidden="false">
+              <img src="home-1.jpeg" data-filename="home-1.jpeg" alt="Home image 1" />
+              <img src="home-2.jpeg" data-filename="home-2.jpeg" alt="Home image 2" />
             </div>
           </div>
         </div>
@@ -268,30 +292,28 @@ Direktur AGNO Grafika Sejahtera</br></br>
           <div class="bio">
             <h2>Kisah Saya</h2>
             <p>
-              Agung adalah penulis pemenang penghargaan yang karyanya mengeksplorasi identitas, rasa memiliki, dan
-              persimpangan antara memori dan tempat. Dengan latar belakang jurnalistik dan sastra, cerita-ceritanya
-              menenun potret karakter intim dengan dunia sinematik yang hidup.
+              Agung memimpin AGNO Grafika Sejahtera sebagai Direktur sekaligus praktisi penerbitan dan desain dengan pengalaman lebih dari satu dekade.
+              Kariernya dimulai di dunia jurnalistik dan produksi cetak dimana ia menggabungkan keahlian editorial, manajemen produksi, dan desain
+              untuk membantu penulis dan organisasi menerbitkan karya berkualitas.
             </p>
             <p>
-              Lahir dan dibesarkan dalam lingkungan multikultural, pengalaman Agung sangat memengaruhi karyanya,
-              menghadirkan keaslian dan kedalaman pada tema identitas budaya dan transformasi pribadi. Novel perdananya,
-              "Echoes of Dawn," menerima pujian kritis dan memenangkan Penghargaan Sastra untuk Suara Baru.
+              Di bawah kepemimpinan AGNO tumbuh dari usaha kecil menjadi mitra terpercaya untuk penerbit independen, sekolah, dan bisnis lokal.
+              Agung aktif membina penulis baru, menyelenggarakan workshop pengembangan naskah, dan menjalankan program literasi komunitas yang menjangkau sekolah-sekolah.
             </p>
             <p>
-              Di luar menulis, Agung membimbing penulis baru dan berbicara di festival serta universitas tentang teknik
-              menulis dan proses kreatif. Ia percaya pada kekuatan cerita untuk menjembatani perbedaan dan
-              membangun pemahaman di dunia yang semakin terhubung.
+              Pendekatan praktisnya — menggabungkan estetika desain dengan proses produksi yang efisien — membuatnya dikenal sebagai penghubung
+              antara gagasan kreatif dan produk cetak yang siap edar.
             </p>
           </div>
-
+ 
           <div class="achievements">
             <h2>Prestasi & Penghargaan</h2>
             <ul>
-              <li>🏆 Penghargaan Sastra untuk Suara Baru (2023)</li>
-              <li>📚 Penulis Terlaris - "Echoes of Dawn"</li>
-              <li>🎤 Pembicara di Konferensi Penulis Internasional</li>
-              <li>✍️ Diterbitkan di 15+ majalah sastra</li>
-              <li>🌟 Nominasi Goodreads Choice Awards</li>
+              <li>🏆 Penghargaan Inovasi Penerbitan Lokal (2021) — pengakuan untuk model produksi cetak terintegrasi</li>
+              <li>📈 Meningkatkan distribusi & cetak bagi 50+ penulis independen sejak 2016</li>
+              <li>🎖 Penghargaan Kewirausahaan Kreatif (2022) — untuk kontribusi pada industri kreatif lokal</li>
+              <li>🎤 Pembicara dan mentor di workshop penulisan & penerbitan (regional)</li>
+              <li>🌟 Nominasi Anugerah Desain Indonesia (2024) — kategori desain sampul dan materi pemasaran</li>
             </ul>
           </div>
 
@@ -411,7 +433,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
               <div>
                 <h3>Media Sosial</h3>
                 <p>Ikuti saya untuk pembaruan dan konten di balik layar</p>
-                <div class="social-links">
+                <div class="social-links"> be</div>
                   <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer" aria-label="Instagram — @agno.print">📷 Instagram</a>
                 </div>
               </div>
@@ -440,30 +462,6 @@ Direktur AGNO Grafika Sejahtera</br></br>
     <div class="footer-content">
       <div class="footer-section">
         <h3>Agung</h3>
-        <p>Penulis pemenang penghargaan fiksi kontemporer dan non-fiksi naratif. Menyelami tema identitas, rasa memiliki, dan pengalaman manusia.</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer" aria-label="Instagram — @agno.print">📷 Instagram</a>
-        </div>
-      </div>
-
-      <div class="footer-section">
-        <h3>Link Cepat</h3>
-        <ul>
-          <li><a href="#home" onclick="navigateTo('home')">Beranda</a></li>
-          <li><a href="#about" onclick="navigateTo('about')">Tentang</a></li>
-          <li><a href="#books" onclick="navigateTo('books')">Buku</a></li>
-          <li><a href="#contact" onclick="navigateTo('contact')">Kontak</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h3>Tetap Terbaru</h3>
-        <p>Langganan buletin saya untuk rilis buku terbaru, pembaruan menulis, dan konten eksklusif.</p>
-        <div class="newsletter">
-          <input type="email" placeholder="Email Anda" />
-          <button class="btn small">Berlangganan</button>
-        </div>
-      </div>
     </div>
 
     <div class="footer-bottom">
@@ -508,6 +506,30 @@ Direktur AGNO Grafika Sejahtera</br></br>
           if (!name) return;
           const candidates = prefixes.map(p => p + name);
           const found = await tryLoad(candidates);
+        return new Promise(resolve => {
+          let i = 0;
+          function next() {
+            if (i >= srcList.length) return resolve(null);
+            const img = new Image();
+            const src = srcList[i++];
+            img.onload = () => resolve(src);
+            img.onerror = () => next();
+            img.src = src;
+          }
+          next();
+        });
+      }
+
+      async function resolveAllImages() {
+        const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
+
+        // img elements using data-filename
+        const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
+        await Promise.all(byFilename.map(async el => {
+          const name = el.dataset.filename;
+          if (!name) return;
+          const candidates = prefixes.map(p => p + name);
+          const found = await tryLoad(candidates);
           if (found) el.src = found;
         }));
 
@@ -528,34 +550,34 @@ Direktur AGNO Grafika Sejahtera</br></br>
       // Load component template
       function loadWhatsAppTemplate() {
         // Prefer the in-document template (this avoids fetch problems on some hosts)
-        const docTpl = document.getElementById('whatsapp-button-template');
-        if (docTpl) {
-          waTemplate = docTpl;
-          return Promise.resolve();
-        }
-        // Fallback: try to fetch the external component file
-        return fetch(WHATSAPP_COMPONENT_PATH)
-          .then(r => {
-            if (!r.ok) throw new Error('HTTP ' + r.status);
-            return r.text();
-          })
-          .then(html => {
-            const tpl = document.createElement('template');
-            tpl.innerHTML = html.trim();
-            waTemplate = tpl;
-          })
-          .catch(err => {
-            console.warn('Failed to load WhatsApp component:', err);
-            // leave waTemplate null -> createWhatsAppButton will fallback to simple link
-          });
-      }
-
-      // Create a WhatsApp anchor element from template
-      function createWhatsAppButton(phone, message, extraClass = '') {
         if (!waTemplate) {
           // fallback simple element
           const a = document.createElement('a');
           a.className = 'whatsapp-order btn small ' + extraClass;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.href = buildWhatsAppHref(phone, message);
+          a.textContent = '✆ Order via WhatsApp';
+          return a;
+        }
+        const node = waTemplate.content.firstElementChild.cloneNode(true);
+        node.classList.add(...(extraClass ? extraClass.split(' ') : []));
+        node.href = buildWhatsAppHref(phone, message);
+        node.setAttribute('aria-label', message || 'Order via WhatsApp');
+        return node;
+      }
+
+      function buildWhatsAppHref(phone, message) {
+        const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
+        const text = message ? `?text=${encodeURIComponent(message)}` : '';
+        return `https://wa.me/${clean}${text}`;
+      }
+
+      // Append WhatsApp order buttons to each book-card
+      function attachOrderButtonsToBooks() {
+        document.querySelectorAll('.book-card').forEach(card => {
+          if (card.dataset.waAdded) return;
+          // Try to find title
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
           a.href = buildWhatsAppHref(phone, message);
@@ -624,29 +646,29 @@ Direktur AGNO Grafika Sejahtera</br></br>
       // Wait for initial load then wire everything
       window.addEventListener('load', async () => {
         await loadWhatsAppTemplate();
-        // resolve images first so UI shows correct assets
-        await resolveAllImages();
-        attachOrderButtonsToBooks();
-        createFloatingWhatsApp();
+      const navLinks = document.querySelectorAll('.nav-link');
 
-        // ensure floating button visibility matches current page
-        const hash = window.location.hash.substring(1) || 'home';
-        updateFloatingWhatsAppVisibility(hash);
-      });
-
-      // Re-attach buttons when new book-card elements are added in future (basic observer)
-      const observer = new MutationObserver((mutations) => {
-        if (!waTemplate) return;
-        let added = false;
-        mutations.forEach(m => {
-          if (m.addedNodes && m.addedNodes.length) added = true;
-        });
-        if (added) attachOrderButtonsToBooks();
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-
-      // --- Existing navigation functions (replaced navigateTo to also toggle floating button) ---
-      // Preserve previous functions but add floating button visibility update.
+      function navigateTo(page) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        // Show selected page
+        const el = document.getElementById(page);
+        if (el) el.classList.add('active');
+        // Update URL hash
+        window.location.hash = page;
+        // Force viewport to the top after the browser's default anchor jump
+        // the timeout ensures this runs after the browser attempts its automatic scroll
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, 0);
+        // Update active nav link
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === page) {
+            link.classList.add('active');
+          }
       let currentPage = 'home';
       const navLinks = document.querySelectorAll('.nav-link');
 
