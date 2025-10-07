@@ -636,7 +636,6 @@ Direktur AGNO Grafika Sejahtera</br></br>
   </footer>
 
   <script>
-  // Cleaned app script: navigation, assets resolver, WhatsApp buttons, modal.
   (function () {
     const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
     const DEFAULT_PHONE = '+62 818-0777-9449';
@@ -661,7 +660,6 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
     async function resolveAllImages() {
       const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
-
       const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
       await Promise.all(byFilename.map(async el => {
         const name = el.dataset.filename;
@@ -712,23 +710,27 @@ Direktur AGNO Grafika Sejahtera</br></br>
     }
 
     function createWhatsAppButton(phone, message, extraClass = '') {
-      if (!waTemplate) {
-        const a = document.createElement('a');
-        a.className = ('whatsapp-order btn small ' + extraClass).trim();
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        a.href = buildWhatsAppHref(phone, message);
-        a.textContent = '✆ Order via WhatsApp';
-        return a;
+      // If template is available and is a <template>, clone it.
+      if (waTemplate && waTemplate.content && waTemplate.content.firstElementChild) {
+        const node = waTemplate.content.firstElementChild.cloneNode(true);
+        if (extraClass) node.classList.add(...extraClass.split(' '));
+        node.href = buildWhatsAppHref(phone, message);
+        node.setAttribute('aria-label', message || 'Order via WhatsApp');
+        node.target = '_blank';
+        node.rel = 'noopener noreferrer';
+        return node;
       }
-      const node = waTemplate.content.firstElementChild.cloneNode(true);
-      if (extraClass) node.classList.add(...extraClass.split(' '));
-      node.href = buildWhatsAppHref(phone, message);
-      node.setAttribute('aria-label', message || 'Order via WhatsApp');
-      return node;
+      // fallback simple anchor
+      const a = document.createElement('a');
+      a.className = ('whatsapp-order btn small ' + extraClass).trim();
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.href = buildWhatsAppHref(phone, message);
+      a.textContent = '✆ Order via WhatsApp';
+      return a;
     }
 
-    // --- Book WhatsApp buttons ---
+    // --- Add WhatsApp buttons to book cards ---
     function attachOrderButtonsToBooks() {
       document.querySelectorAll('.book-card').forEach(card => {
         if (card.dataset.waAdded) return;
@@ -756,137 +758,132 @@ Direktur AGNO Grafika Sejahtera</br></br>
       const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
       btn.id = 'whatsapp-floating-btn';
       document.body.appendChild(btn);
-      event.preventDefault();
-      floatingButton = btn;s pesan Anda! Saya akan segera menghubungi Anda.');
+      floatingButton = btn;
       return floatingButton;
     }
 
-    function updateFloatingWhatsAppVisibility(page) {    // --- Mutation observer to attach buttons to dynamically added book cards ---
+    function updateFloatingWhatsAppVisibility(page) {
       const btn = document.getElementById('whatsapp-floating-btn');
       if (!btn) return;
-      if (page === 'home') btn.classList.remove('hidden');m => { if (m.addedNodes && m.addedNodes.length) added = true; });
+      if (page === 'home') btn.classList.remove('hidden');
       else btn.classList.add('hidden');
     }
 
-    // --- Navigation / routing ---    // --- Initialization on load ---
-    let currentPage = 'home';sync () => {
-    const navLinksSelector = '.nav-link';
-    function updateActiveNav(page) {h(() => {});
-      document.querySelectorAll(navLinksSelector).forEach(link => {ed
+    // --- Navigation ---
+    let currentPage = 'home';
+    function updateActiveNav(page) {
+      document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.toggle('active', link.dataset.page === page);
-      });ToBooks();
+      });
     }
-.body, { childList: true, subtree: true });
+
     function navigateTo(page, pushState = true) {
-      if (!page) page = 'home';      // initial navigation based on hash
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));|| '').replace(/^#/, '') || 'home';
+      if (!page) page = 'home';
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       const el = document.getElementById(page);
       if (el) el.classList.add('active');
       if (pushState) {
-        try {    window.addEventListener('hashchange', () => {
-          history.replaceState(null, '', '#' + page);eplace(/^#/, '');
+        try {
+          history.replaceState(null, '', '#' + page);
         } catch (e) {
           window.location.hash = page;
         }
-      }    // Expose globals used by inline attributes
-      // ensure scroll top
+      }
       setTimeout(() => { window.scrollTo(0, 0); }, 0);
       updateActiveNav(page);
-      currentPage = page;dleFormSubmit;
+      currentPage = page;
       closeMenu();
-      updateFloatingWhatsAppVisibility(page);    // --- Hero slider initializer ---
+      updateFloatingWhatsAppVisibility(page);
     }
-uerySelector('.hero-bg');
+
     function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');rom(slider.querySelectorAll('img'));
-      const toggle = document.getElementById('mobile-menu-toggle');
-      navLinks.classList.toggle('active');
-      if (toggle) toggle.classList.toggle('active');((img, i) => img.classList.toggle('active', i === 0));
-    }
- {
-    function closeMenu() {st.remove('active');
       const navLinks = document.getElementById('nav-links');
-      const toggle = document.getElementById('mobile-menu-toggle');e');
-      navLinks.classList.remove('active');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (navLinks) navLinks.classList.toggle('active');
+      if (toggle) toggle.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (navLinks) navLinks.classList.remove('active');
       if (toggle) toggle.classList.remove('active');
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
+      if (event.target && event.target.reset) event.target.reset();
+    }
+
+    // Observe DOM for added book-cards (in case of dynamic changes)
+    const observer = new MutationObserver((mutations) => {
+      let added = false;
+      mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
+      if (added) attachOrderButtonsToBooks();
     });
 
-    function handleFormSubmit(event) {  // --- Service preview modal logic (kept separate) ---
-      event.preventDefault();
-      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');= document.getElementById('img-modal');
-      if (event.target && event.target.reset) event.target.reset();
-    }dal.querySelector('img');
-aption');
-    // --- Mutation observer to attach buttons to dynamically added book cards ---
-    const observer = new MutationObserver((mutations) => {
-      let added = false;    function openServicePreview(src, title) {
-      mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
-      if (added) attachOrderButtonsToBooks();c;
-    });e || '';
-title || '';
-    // --- Initialization on load ---
-    window.addEventListener('load', async () => {n', 'false');
+    // --- Initialization ---
+    window.addEventListener('load', async () => {
       await loadWhatsAppTemplate();
       await resolveAllImages().catch(() => {});
-       // start hero slider after images resolved    function closeServicePreview() {
-       initHeroSlider();');
-      attachOrderButtonsToBooks(); 'true');
+      attachOrderButtonsToBooks();
       createFloatingWhatsApp();
-      observer.observe(document.body, { childList: true, subtree: true });ontent = '';
+      observer.observe(document.body, { childList: true, subtree: true });
 
-      // initial navigation based on hash
-      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';    document.querySelectorAll('.service-card').forEach(card => {
+      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';
       navigateTo(hash, false);
-    });s')) return;
+    });
 
-    window.addEventListener('hashchange', () => {e;
+    window.addEventListener('hashchange', () => {
       const hash = (window.location.hash || '').replace(/^#/, '');
       if (hash) navigateTo(hash, false);
     });
 
-    // Expose globals used by inline attributes    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
-    window.navigateTo = navigateTo;ServicePreview(); });
-    window.toggleMenu = toggleMenu;tains('active')) closeServicePreview(); });
+    // Expose for inline handlers
+    window.navigateTo = navigateTo;
+    window.toggleMenu = toggleMenu;
     window.closeMenu = closeMenu;
-    window.handleFormSubmit = handleFormSubmit;ipt>
+    window.handleFormSubmit = handleFormSubmit;
+  })();
 
-    // --- Service preview modal logic (kept separate) ---
-    (function () {
-      const modal = document.getElementById('img-modal');
-      if (!modal) return;
-      const modalImg = modal.querySelector('img');
-      const modalCaption = modal.querySelector('.caption');
-      const closeBtn = modal.querySelector('.close');
+  // --- Service preview modal logic (kept separate) ---
+  (function () {
+    const modal = document.getElementById('img-modal');
+    if (!modal) return;
+    const modalImg = modal.querySelector('img');
+    const modalCaption = modal.querySelector('.caption');
+    const closeBtn = modal.querySelector('.close');
 
-      function openServicePreview(src, title) {
-        if (!src) return;
-        modalImg.src = src;
-        modalImg.alt = title || '';
-        modalCaption.textContent = title || '';
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-      }
+    function openServicePreview(src, title) {
+      if (!src) return;
+      if (modalImg) modalImg.src = src;
+      if (modalImg) modalImg.alt = title || '';
+      if (modalCaption) modalCaption.textContent = title || '';
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
 
-      function closeServicePreview() {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        modalImg.src = '';
-        modalCaption.textContent = '';
-      }
+    function closeServicePreview() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      if (modalImg) modalImg.src = '';
+      if (modalCaption) modalCaption.textContent = '';
+    }
 
-      document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          if (e.target.closest('.service-actions')) return;
-          const src = card.dataset.image;
-          const title = card.dataset.title;
-          openServicePreview(src, title);
-        });
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.service-actions')) return;
+        const src = card.dataset.image;
+        const title = card.dataset.title;
+        openServicePreview(src, title);
       });
+    });
 
-      if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
-    })();
+    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
+  })();
   </script>
 </body>
 </html>
