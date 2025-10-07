@@ -243,6 +243,7 @@
       padding: 0;
       background: #fff;
       border-radius: 8px;
+      padding-bottom: 6px;
       border: 1px solid #eee;
       overflow: hidden;
     }
@@ -293,6 +294,36 @@
       .book-card { flex-direction: column; }
       .book-cover { max-width: 100%; flex: 0 0 auto; }
       .book-info { width: 100%; }
+    }
+
+    /* Improve Services readability & actions */
+    .services { background: transparent; color: #0f172a; }
+    .service-card {
+      cursor: auto; /* remove full-card click hint */
+      color: inherit;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card h3 { color: #0b1220; } /* ensure dark, readable title */
+    .service-features { color: #334155; line-height: 1.5; }
+    .service-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .service-actions a.btn {
+      display: inline-block;
+      padding: 8px 12px;
+      text-decoration: none;
+    }
+    /* keep WA button visible on dark overlay too */
+    .whatsapp-order { background: #25D366; color: #fff; border-radius: 6px; }
+    @media (max-width: 560px) {
+      .service-actions { flex-direction: column; }
+      .whatsapp-order.btn.small { width: 100%; text-align:center; }
     }
   </style>
 </head>
@@ -494,38 +525,46 @@ Direktur AGNO Grafika Sejahtera</br></br>
         </div>
 
         <div class="services-grid">
-          <article class="service-card" data-title="Penerbitan Buku">
-            <h3>Penerbitan Buku</h3>
-            <p class="service-features">Editorial, layout, ISBN, produksi cetak dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
+          <article class="service-card" data-title="Penerbitan Buku" aria-label="Penerbitan Buku">
+            <div>
+              <h3>Penerbitan Buku</h3>
+              <p class="service-features">Editorial, layout, ISBN, produksi cetak, dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
+            </div>
             <div class="service-actions">
-              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn primary small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Kontak Saya</a>
             </div>
           </article>
 
-          <article class="service-card" data-title="Percetakan Komersial">
-            <h3>Percetakan Komersial</h3>
-            <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
-            <div class="service-actions"></div>
-              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Percetakan%20Komersial" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+          <article class="service-card" data-title="Percetakan Komersial" aria-label="Percetakan Komersial">
+            <div>
+              <h3>Percetakan Komersial</h3>
+              <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
+            </div>
+            <div class="service-actions">
+              <a class="btn primary small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Percetakan%20Komersial" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Kontak Saya</a>
             </div>
           </article>
 
-          <article class="service-card" data-title="Pengadaan & Perlengkapan Kantor">
-            <h3>Pengadaan & Perlengkapan Kantor</h3>
-            <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
+          <article class="service-card" data-title="Pengadaan & Perlengkapan Kantor" aria-label="Pengadaan & Perlengkapan Kantor">
+            <div>
+              <h3>Pengadaan & Perlengkapan Kantor</h3>
+              <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
+            </div>
             <div class="service-actions">
-              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20pengadaan%20perlengkapan%20kantor" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn primary small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20pengadaan%20perlengkapan%20kantor" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Kontak Saya</a>
             </div>
           </article>
 
-          <article class="service-card" data-title="Desain Grafis & Sablon">
-            <h3>Desain Grafis & Sablon</h3>
-            <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
+          <article class="service-card" data-title="Desain Grafis & Sablon" aria-label="Desain Grafis & Sablon">
+            <div>
+              <h3>Desain Grafis & Sablon</h3>
+              <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
+            </div>
             <div class="service-actions">
-              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Desain%20Grafis%20dan%20Sablon" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn primary small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Desain%20Grafis%20dan%20Sablon" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Kontak Saya</a>
             </div>
           </article>
