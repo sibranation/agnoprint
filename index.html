@@ -151,38 +151,87 @@
       .home-gallery img { width: 100px; height: 66px; }
     }
 
-    /* Hero background slider (full-bleed, low opacity behind text) */
+    /* Hero background: animated infinite gradient (replaces image slider) */
     .hero { position: relative; overflow: hidden; }
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 0;
-      opacity: 0.6;
       pointer-events: none;
+      opacity: 0.6;
+      background: linear-gradient(270deg, #f6d365, #fda085, #fbc2eb, #a6c1ee);
+      background-size: 800% 800%;
+      animation: gradientShift 12s linear infinite;
     }
-    .hero-bg img {
-      position: absolute;
-      inset: 0;
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-content { position: relative; z-index: 1; }
+
+    /* Books layout: full-width horizontal cards (image left, content right) */
+    .books-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .book-card {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+    .book-cover {
+      flex: 0 0 40%;
+      max-width: 40%;
+      display: block;
+    }
+    .book-cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.6s ease;
+      border-radius: 6px;
+      display: block;
     }
-    .hero-bg img.active { opacity: 1; }
-    .hero-content { position: relative; z-index: 1; }
-
-    /* Books grid: limit book card width to max 240px */
-    .books-grid {
+    .book-info {
+      flex: 1 1 60%;
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: flex-start;
+      flex-direction: column;
+      gap: 8px;
     }
-    .book-card {
-      flex: 0 0 240px;
-      max-width: 240px;
-      box-sizing: border-box;
+    .book-info h3 { margin: 0; }
+    .book-info p { margin: 0; color: #444; }
+    .book-info .book-price { margin-top: 8px; }
+
+    /* Services gallery (bottom of 'Jasa Kami' section) */
+    .services-gallery {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      align-items: center;
+    }
+    .services-gallery img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      display: block;
+      background: #fafafa;
+    }
+
+    @media (max-width: 800px) {
+      .book-card { flex-direction: column; }
+      .book-cover { max-width: 100%; flex: 0 0 auto; }
+      .book-info { width: 100%; }
     }
   </style>
 </head>
@@ -217,11 +266,8 @@
     <!-- Home Page -->
     <section id="home" class="page active">
       <section class="hero">
-        <!-- hero background slider (images resolved by resolver) -->
-        <div class="hero-bg" aria-hidden="true">
-          <img src="assets/home/home-1.jpeg" data-filename="home-1.jpeg" alt="Home background 1" />
-          <img src="assets/home/home-2.jpeg" data-filename="home-2.jpeg" alt="Home background 2" />
-        </div>
+        <!-- hero background is now an animated gradient -->
+        <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
           <div class="text">
             <h1>Halo, saya <span class="accent">Agung</span></h1>
@@ -250,19 +296,30 @@
         <div class="books-grid">
           <article class="book-card">
             <div class="book-cover">
-              <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Echoes of Dawn" />
+              <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
             </div>
-            <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
-            <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
-            <div class="book-price">Rp. 75.000</div>
+            <div class="book-info">
+              <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
+              <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
+              <div class="book-price">Rp. 75.000</div>
+              <div style="margin-top:8px;">
+                <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
+              </div>
+            </div>
           </article>
+
           <article class="book-card">
             <div class="book-cover">
-              <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Maps for the Heart" />
+              <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
             </div>
-            <h3>Guru Sejarah yang Mencerdaskan</h3>
-            <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
-            <div class="book-price">Rp. 85.000</div>
+            <div class="book-info">
+              <h3>Guru Sejarah yang Mencerdaskan</h3>
+              <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
+              <div class="book-price">Rp. 85.000</div>
+              <div style="margin-top:8px;">
+                <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
+              </div>
+            </div>
           </article>
         </div>
       </section>
@@ -336,7 +393,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
               Kariernya dimulai di dunia jurnalistik dan produksi cetak dimana ia menggabungkan keahlian editorial, manajemen produksi, dan desain
               untuk membantu penulis dan organisasi menerbitkan karya berkualitas.
             </p>
-            <p>
+            <p></p>
               Di bawah kepemimpinan AGNO tumbuh dari usaha kecil menjadi mitra terpercaya untuk penerbit independen, sekolah, dan bisnis lokal.
               Agung aktif membina penulis baru, menyelenggarakan workshop pengembangan naskah, dan menjalankan program literasi komunitas yang menjangkau sekolah-sekolah.
             </p>
@@ -349,11 +406,9 @@ Direktur AGNO Grafika Sejahtera</br></br>
           <div class="achievements">
             <h2>Prestasi & Penghargaan</h2>
             <ul>
-              <li>🏆 Penghargaan Inovasi Penerbitan Lokal (2021) — pengakuan untuk model produksi cetak terintegrasi</li>
               <li>📈 Meningkatkan distribusi & cetak bagi 50+ penulis independen sejak 2016</li>
               <li>🎖 Penghargaan Kewirausahaan Kreatif (2022) — untuk kontribusi pada industri kreatif lokal</li>
               <li>🎤 Pembicara dan mentor di workshop penulisan & penerbitan (regional)</li>
-              <li>🌟 Nominasi Anugerah Desain Indonesia (2024) — kategori desain sampul dan materi pemasaran</li>
             </ul>
           </div>
 
@@ -380,18 +435,16 @@ Direktur AGNO Grafika Sejahtera</br></br>
         </div>
 
         <div class="services-grid">
-          <article class="service-card" data-image="services/penerbitan.jpg" data-title="Penerbitan Buku">
-            <img class="preview" src="services/penerbitan.jpg" data-image="services/penerbitan.jpg" alt="Preview Penerbitan Buku" />
+          <article class="service-card" data-title="Penerbitan Buku">
             <h3>Penerbitan Buku</h3>
             <p class="service-features">Editorial, layout, ISBN, produksi cetak dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
-            <div class="service-actions"></div>
+            <div class="service-actions">
               <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Kontak Saya</a>
             </div>
           </article>
 
-          <article class="service-card" data-image="services/percetakan.jpg" data-title="Percetakan Komersial">
-            <img class="preview" src="services/percetakan.jpg" data-image="services/percetakan.jpg" alt="Preview Percetakan Komersial" />
+          <article class="service-card" data-title="Percetakan Komersial">
             <h3>Percetakan Komersial</h3>
             <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
             <div class="service-actions">
@@ -400,8 +453,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
             </div>
           </article>
 
-          <article class="service-card" data-image="services/pengadaan.jpg" data-title="Pengadaan & Perlengkapan Kantor">
-            <img class="preview" src="services/pengadaan.jpg" data-image="services/pengadaan.jpg" alt="Preview Pengadaan & Perlengkapan Kantor" />
+          <article class="service-card" data-title="Pengadaan & Perlengkapan Kantor">
             <h3>Pengadaan & Perlengkapan Kantor</h3>
             <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
             <div class="service-actions">
@@ -410,8 +462,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
             </div>
           </article>
 
-          <article class="service-card" data-image="services/desain.jpg" data-title="Desain Grafis & Sablon">
-            <img class="preview" src="services/desain.jpg" data-image="services/desain.jpg" alt="Preview Desain Grafis & Sablon" />
+          <article class="service-card" data-title="Desain Grafis & Sablon">
             <h3>Desain Grafis & Sablon</h3>
             <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
             <div class="service-actions">
@@ -420,31 +471,48 @@ Direktur AGNO Grafika Sejahtera</br></br>
             </div>
           </article>
         </div>
+
+        <!-- Services gallery: show all images from assets/services/ -->
+        <div class="services-gallery" aria-hidden="false">
+          <img src="assets/services/penerbitan.jpg" data-image="services/penerbitan.jpg" alt="Penerbitan" />
+          <img src="assets/services/percetakan.jpg" data-image="services/percetakan.jpg" alt="Percetakan" />
+          <img src="assets/services/pengadaan.jpg" data-image="services/pengadaan.jpg" alt="Pengadaan" />
+          <img src="assets/services/desain.jpg" data-image="services/desain.jpg" alt="Desain" />
+        </div>
       </section>
     </section>
 
     <!-- Books Page -->
     <section id="books" class="page">
       <section class="featured-books">
+        <h2>Buku Unggulan</h2>
         <div class="books-grid">
           <article class="book-card">
             <div class="book-cover">
               <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
             </div>
-            <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
-            <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
-            <div class="book-price">Rp. 75.000</div>
-            <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
+            <div class="book-info">
+              <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
+              <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
+              <div class="book-price">Rp. 75.000</div>
+              <div style="margin-top:8px;"></div>
+                <a href="#" class="btn primary small">Beli Sekarang</a>
+              </div>
+            </div>
           </article>
 
           <article class="book-card">
             <div class="book-cover">
               <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
             </div>
-            <h3>Guru Sejarah yang Mencerdaskan</h3>
-            <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
-            <div class="book-price">Rp. 85.000</div>
-            <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
+            <div class="book-info">
+              <h3>Guru Sejarah yang Mencerdaskan</h3>
+              <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
+              <div class="book-price">Rp. 85.000</div>
+              <div style="margin-top:8px;">
+                <a href="#" class="btn primary small">Beli Sekarang</a>
+              </div>
+            </div>
           </article>
         </div>
       </section>
@@ -633,153 +701,137 @@ Direktur AGNO Grafika Sejahtera</br></br>
       const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
       btn.id = 'whatsapp-floating-btn';
       document.body.appendChild(btn);
-      floatingButton = btn;
+      event.preventDefault();
+      floatingButton = btn;s pesan Anda! Saya akan segera menghubungi Anda.');
       return floatingButton;
     }
 
-    function updateFloatingWhatsAppVisibility(page) {
+    function updateFloatingWhatsAppVisibility(page) {    // --- Mutation observer to attach buttons to dynamically added book cards ---
       const btn = document.getElementById('whatsapp-floating-btn');
       if (!btn) return;
-      if (page === 'home') btn.classList.remove('hidden');
+      if (page === 'home') btn.classList.remove('hidden');m => { if (m.addedNodes && m.addedNodes.length) added = true; });
       else btn.classList.add('hidden');
     }
 
-    // --- Navigation / routing ---
-    let currentPage = 'home';
+    // --- Navigation / routing ---    // --- Initialization on load ---
+    let currentPage = 'home';sync () => {
     const navLinksSelector = '.nav-link';
-    function updateActiveNav(page) {
-      document.querySelectorAll(navLinksSelector).forEach(link => {
+    function updateActiveNav(page) {h(() => {});
+      document.querySelectorAll(navLinksSelector).forEach(link => {ed
         link.classList.toggle('active', link.dataset.page === page);
-      });
+      });ToBooks();
     }
-
+.body, { childList: true, subtree: true });
     function navigateTo(page, pushState = true) {
-      if (!page) page = 'home';
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      if (!page) page = 'home';      // initial navigation based on hash
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));|| '').replace(/^#/, '') || 'home';
       const el = document.getElementById(page);
       if (el) el.classList.add('active');
       if (pushState) {
-        try {
-          history.replaceState(null, '', '#' + page);
+        try {    window.addEventListener('hashchange', () => {
+          history.replaceState(null, '', '#' + page);eplace(/^#/, '');
         } catch (e) {
           window.location.hash = page;
         }
-      }
+      }    // Expose globals used by inline attributes
       // ensure scroll top
       setTimeout(() => { window.scrollTo(0, 0); }, 0);
       updateActiveNav(page);
-      currentPage = page;
+      currentPage = page;dleFormSubmit;
       closeMenu();
-      updateFloatingWhatsAppVisibility(page);
+      updateFloatingWhatsAppVisibility(page);    // --- Hero slider initializer ---
     }
-
+uerySelector('.hero-bg');
     function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
+      const navLinks = document.getElementById('nav-links');rom(slider.querySelectorAll('img'));
       const toggle = document.getElementById('mobile-menu-toggle');
       navLinks.classList.toggle('active');
-      if (toggle) toggle.classList.toggle('active');
+      if (toggle) toggle.classList.toggle('active');((img, i) => img.classList.toggle('active', i === 0));
     }
-
-    function closeMenu() {
+ {
+    function closeMenu() {st.remove('active');
       const navLinks = document.getElementById('nav-links');
-      const toggle = document.getElementById('mobile-menu-toggle');
+      const toggle = document.getElementById('mobile-menu-toggle');e');
       navLinks.classList.remove('active');
       if (toggle) toggle.classList.remove('active');
-    }
+    });
 
-    function handleFormSubmit(event) {
+    function handleFormSubmit(event) {  // --- Service preview modal logic (kept separate) ---
       event.preventDefault();
-      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
+      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');= document.getElementById('img-modal');
       if (event.target && event.target.reset) event.target.reset();
-    }
-
+    }dal.querySelector('img');
+aption');
     // --- Mutation observer to attach buttons to dynamically added book cards ---
     const observer = new MutationObserver((mutations) => {
-      let added = false;
+      let added = false;    function openServicePreview(src, title) {
       mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
-      if (added) attachOrderButtonsToBooks();
-    });
-
+      if (added) attachOrderButtonsToBooks();c;
+    });e || '';
+title || '';
     // --- Initialization on load ---
-    window.addEventListener('load', async () => {
+    window.addEventListener('load', async () => {n', 'false');
       await loadWhatsAppTemplate();
       await resolveAllImages().catch(() => {});
-       // start hero slider after images resolved
-       initHeroSlider();
-      attachOrderButtonsToBooks();
+       // start hero slider after images resolved    function closeServicePreview() {
+       initHeroSlider();');
+      attachOrderButtonsToBooks(); 'true');
       createFloatingWhatsApp();
-      observer.observe(document.body, { childList: true, subtree: true });
+      observer.observe(document.body, { childList: true, subtree: true });ontent = '';
 
       // initial navigation based on hash
-      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';
+      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';    document.querySelectorAll('.service-card').forEach(card => {
       navigateTo(hash, false);
-    });
+    });s')) return;
 
-    window.addEventListener('hashchange', () => {
+    window.addEventListener('hashchange', () => {e;
       const hash = (window.location.hash || '').replace(/^#/, '');
       if (hash) navigateTo(hash, false);
     });
 
-    // Expose globals used by inline attributes
-    window.navigateTo = navigateTo;
-    window.toggleMenu = toggleMenu;
+    // Expose globals used by inline attributes    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
+    window.navigateTo = navigateTo;ServicePreview(); });
+    window.toggleMenu = toggleMenu;tains('active')) closeServicePreview(); });
     window.closeMenu = closeMenu;
-    window.handleFormSubmit = handleFormSubmit;
+    window.handleFormSubmit = handleFormSubmit;ipt>
 
-    // --- Hero slider initializer ---
-    function initHeroSlider() {
-      const slider = document.querySelector('.hero-bg');
-      if (!slider) return;
-      const imgs = Array.from(slider.querySelectorAll('img'));
-      if (!imgs.length) return;
-      let idx = 0;
-      imgs.forEach((img, i) => img.classList.toggle('active', i === 0));
-      // cycle every 4s
-      setInterval(() => {
-        imgs[idx].classList.remove('active');
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].classList.add('active');
-      }, 4000);
-    }
-  })();
+    // --- Service preview modal logic (kept separate) ---
+    (function () {
+      const modal = document.getElementById('img-modal');
+      if (!modal) return;
+      const modalImg = modal.querySelector('img');
+      const modalCaption = modal.querySelector('.caption');
+      const closeBtn = modal.querySelector('.close');
 
-  // --- Service preview modal logic (kept separate) ---
-  (function () {
-    const modal = document.getElementById('img-modal');
-    if (!modal) return;
-    const modalImg = modal.querySelector('img');
-    const modalCaption = modal.querySelector('.caption');
-    const closeBtn = modal.querySelector('.close');
+      function openServicePreview(src, title) {
+        if (!src) return;
+        modalImg.src = src;
+        modalImg.alt = title || '';
+        modalCaption.textContent = title || '';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
 
-    function openServicePreview(src, title) {
-      if (!src) return;
-      modalImg.src = src;
-      modalImg.alt = title || '';
-      modalCaption.textContent = title || '';
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-    }
+      function closeServicePreview() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+        modalCaption.textContent = '';
+      }
 
-    function closeServicePreview() {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      modalImg.src = '';
-      modalCaption.textContent = '';
-    }
-
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.service-actions')) return;
-        const src = card.dataset.image;
-        const title = card.dataset.title;
-        openServicePreview(src, title);
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.service-actions')) return;
+          const src = card.dataset.image;
+          const title = card.dataset.title;
+          openServicePreview(src, title);
+        });
       });
-    });
 
-    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
-  })();
+      if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
+    })();
   </script>
 </body>
 </html>
