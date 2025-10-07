@@ -5,7 +5,7 @@
   <title>Agnoprint</title>
   <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="logo-ico.ico">
   <link rel="stylesheet" href="styles.css">
 
   <!-- Added: floating WhatsApp button styles -->
@@ -64,13 +64,75 @@
       flex-direction: column;
       gap: 10px;
     }
-    .service-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
-    .service-features { font-size: 0.95rem; color:#444; }
-    .service-actions { margin-top: auto; display:flex; gap:8px; }
-    .service-actions a.btn { white-space: nowrap; }
+    .service-card h3 { margin: 0 0 6px; font-size: 1.05rem; color: #111; } /* darker title */
+    .service-card .preview {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      display:block;
+      margin-bottom: 8px;
+    }
+    .service-card { cursor: pointer; }
+    /* Modal / lightbox for previews */
+    .img-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.65);
+      z-index: 11000;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .img-modal.active { display: flex; }
+    .img-modal .img-box { max-width: 100%; max-height: 100%; position: relative; }
+    .img-modal img { max-width: 100%; max-height: 80vh; border-radius: 8px; display:block; margin: 0 auto; }
+    .img-modal .caption { color: #fff; text-align:center; margin-top: 10px; font-size: 0.95rem; }
+    .img-modal .close {
+      position: absolute;
+      right: -6px;
+      top: -6px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 6px 10px;
+    }
+
+    /* Make the "Cara Lain untuk Terhubung" block full-bleed (full viewport width) */
+    #contact .contact-content {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: 32px 20px;
+      box-sizing: border-box;
+    }
+    /* Allow the inner contact-info to expand and layout responsively */
+    #contact .contact-info {
+      max-width: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    #contact .contact-info .info-item {
+      flex: 1 1 260px; /* responsive columns */
+      min-width: 220px;
+    }
   </style>
 </head>
 <body>
+  <!-- Inline WhatsApp button template (fallback / primary source for deployments) -->
+  <template id="whatsapp-button-template">
+    <a class="whatsapp-order btn small" href="#" target="_blank" rel="noopener noreferrer" aria-label="Order via WhatsApp">
+      ✆ Order via WhatsApp
+    </a>
+  </template>
   <header class="navbar">
     <div class="brand">
       <a href="#home" onclick="navigateTo('home'); closeMenu();">
@@ -147,7 +209,7 @@
         <div class="about-content">
           <div class="text">
             <h2>Tentang Agno Grafika Sejahtera</h2>
-            <p>
+            <p></p>
               AGNO GRAFIKA SEJAHTERA telah berjalan hampir 10 Tahun. Menangani secara khusus pekerjaan dibidang Penerbitan Buku, Percetakan, Pengadaan/Kebutuhan Alat Kantor, Fotografi, Bidang Perancang Grafis untuk berbagai kebutuhan dan Sablon T-Shirt. Dengan pengalaman yang cukup panjang kami siap membantu dan bekerja bersama memberikan solusi terbaik untuk Anda. Komitmen yang akan terus kami jaga adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI. 
             </p>
 
@@ -258,16 +320,18 @@ Direktur AGNO Grafika Sejahtera</br></br>
         </div>
 
         <div class="services-grid">
-          <article class="service-card">
+          <article class="service-card" data-image="services/penerbitan.jpg" data-title="Penerbitan Buku">
+            <img class="preview" src="services/penerbitan.jpg" alt="Preview Penerbitan Buku" />
             <h3>Penerbitan Buku</h3>
             <p class="service-features">Editorial, layout, ISBN, produksi cetak dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
-            <div class="service-actions">
+            <div class="service-actions"></div>
               <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
               <a class="btn small" href="#contact" onclick="navigateTo('contact')">Request Quote</a>
             </div>
           </article>
 
-          <article class="service-card">
+          <article class="service-card" data-image="services/percetakan.jpg" data-title="Percetakan Komersial">
+            <img class="preview" src="services/percetakan.jpg" alt="Preview Percetakan Komersial" />
             <h3>Percetakan Komersial</h3>
             <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
             <div class="service-actions">
@@ -276,7 +340,8 @@ Direktur AGNO Grafika Sejahtera</br></br>
             </div>
           </article>
 
-          <article class="service-card">
+          <article class="service-card" data-image="services/pengadaan.jpg" data-title="Pengadaan & Perlengkapan Kantor">
+            <img class="preview" src="services/pengadaan.jpg" alt="Preview Pengadaan & Perlengkapan Kantor" />
             <h3>Pengadaan & Perlengkapan Kantor</h3>
             <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
             <div class="service-actions">
@@ -285,7 +350,8 @@ Direktur AGNO Grafika Sejahtera</br></br>
             </div>
           </article>
 
-          <article class="service-card">
+          <article class="service-card" data-image="services/desain.jpg" data-title="Desain Grafis & Sablon">
+            <img class="preview" src="services/desain.jpg" alt="Preview Desain Grafis & Sablon" />
             <h3>Desain Grafis & Sablon</h3>
             <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
             <div class="service-actions">
@@ -496,8 +562,18 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
       // Load component template
       function loadWhatsAppTemplate() {
+        // Prefer the in-document template (this avoids fetch problems on some hosts)
+        const docTpl = document.getElementById('whatsapp-button-template');
+        if (docTpl) {
+          waTemplate = docTpl;
+          return Promise.resolve();
+        }
+        // Fallback: try to fetch the external component file
         return fetch(WHATSAPP_COMPONENT_PATH)
-          .then(r => r.text())
+          .then(r => {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.text();
+          })
           .then(html => {
             const tpl = document.createElement('template');
             tpl.innerHTML = html.trim();
@@ -505,6 +581,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
           })
           .catch(err => {
             console.warn('Failed to load WhatsApp component:', err);
+            // leave waTemplate null -> createWhatsAppButton will fallback to simple link
           });
       }
 
@@ -672,6 +749,48 @@ Direktur AGNO Grafika Sejahtera</br></br>
       window.toggleMenu = toggleMenu;
       window.closeMenu = closeMenu;
       window.handleFormSubmit = handleFormSubmit;
+    })();
+
+    // Service preview modal logic
+    (function () {
+      const modal = document.getElementById('img-modal');
+      const modalImg = modal.querySelector('img');
+      const modalCaption = modal.querySelector('.caption');
+      const closeBtn = modal.querySelector('.close');
+
+      function openServicePreview(src, title) {
+        if (!src) return;
+        modalImg.src = src;
+        modalImg.alt = title || '';
+        modalCaption.textContent = title || '';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeServicePreview() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+        modalCaption.textContent = '';
+      }
+
+      // Click handlers on service cards (ignore clicks on action buttons)
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.service-actions')) return; // don't open when action clicked
+          const src = card.dataset.image;
+          const title = card.dataset.title;
+          openServicePreview(src, title);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeServicePreview);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeServicePreview();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview();
+      });
     })();
   </script>
 </body>
