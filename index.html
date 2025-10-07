@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Agnoprint</title>
-  <base href="/">
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
@@ -33,13 +33,22 @@
     .whatsapp-order { text-decoration: none; }
     /* adjust small button look if needed */
     .whatsapp-order.btn.small { padding: 6px 10px; }
+
+    /* Ensure placeholder images show agung.png correctly */
+    .placeholder-image { overflow: hidden; background: #f3f3f3; display:block; }
+    .placeholder-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   </style>
 </head>
 <body>
   <header class="navbar">
     <div class="brand">
       <a href="#home" onclick="navigateTo('home'); closeMenu();">
-        <div class="logo"><img src="/logo.png" /></div> Agnoprint
+        <div class="logo"><img src="logo.png" /></div> Agnoprint
       </a>
     </div>
     <nav class="nav-links" id="nav-links">
@@ -69,7 +78,9 @@
             </div>
           </div>
           <div class="hero-image">
-            <div class="placeholder-image"></div>
+            <div class="placeholder-image">
+              <img src="agung.png" alt="Agung" />
+            </div>
           </div>
         </div>
       </section>
@@ -79,7 +90,7 @@
         <div class="books-grid">
           <article class="book-card">
             <div class="book-cover">
-              <img src="/book-1.jpeg" alt="Sampul Echoes of Dawn" />
+              <img src="book-1.jpeg" alt="Sampul Echoes of Dawn" />
             </div>
             <h3>Echoes of Dawn</h3>
             <p>Sebuah novel bercahaya tentang memori, migrasi, dan makna rumah.</p>
@@ -87,7 +98,7 @@
           </article>
           <article class="book-card">
             <div class="book-cover">
-              <img src="/book-2.jpeg" alt="Sampul Maps for the Heart" />
+              <img src="book-2.jpeg" alt="Sampul Maps for the Heart" />
             </div>
             <h3>Maps for the Heart</h3>
             <p>Esai-intim tentang kreativitas, duka, dan menemukan suara Anda.</p>
@@ -95,7 +106,7 @@
           </article>
           <article class="book-card">
             <div class="book-cover">
-              <img src="/book-1.jpeg" alt="Sampul The Quiet River" />
+              <img src="book-1.jpeg" alt="Sampul The Quiet River" />
             </div>
             <h3>The Quiet River</h3>
             <p>Sebuah thriller sastra yang tegang berlatar kota pesisir berkabut.</p>
@@ -108,12 +119,20 @@
         <div class="about-content">
           <div class="text">
             <h2>Tentang Penulis</h2>
-            <p>Agung adalah penulis pemenang penghargaan yang karyanya mengeksplorasi identitas, rasa memiliki, dan persimpangan antara memori dan tempat. Dengan latar belakang jurnalistik dan sastra, cerita-ceritanya menenun potret karakter intim dengan dunia sinematik yang hidup.</p>
+            <p>
+              AGNO GRAFIKA SEJAHTER telah berjalan hampir 10 Tahun. Menangani secara khusus pekerjaan dibidang Penerbitan Buku, Percetakan, Pengadaan/Kebutuhan Alat Kantor, Fotografi, Bidang Perancang Grafis untuk berbagai kebutuhan dan Sablon T-Shirt. Dengan pengalaman yang cukup panjang kami siap membantu dan bekerja bersama memberikan solusi terbaik untuk Anda. Komitmen yang akan terus kami jaga adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI. 
+
+Salam,
+Drajat Agung Laksono
+Direktur AGNO Grafika Sejahtera
+            </p>
             <p>Di luar menulis, Agung membimbing penulis baru dan berbicara di festival serta universitas tentang teknik menulis dan proses kreatif.</p>
             <a href="#about" onclick="navigateTo('about')" class="btn primary">Baca Biografi Lengkap</a>
           </div>
           <div class="about-image">
-            <div class="placeholder-image"></div>
+            <div class="placeholder-image">
+              <img src="agung.png" alt="Agung" />
+            </div>
           </div>
         </div>
       </section>
@@ -148,7 +167,9 @@
       <section class="about">
         <div class="about-header">
           <div class="author-image">
-            <div class="placeholder-image"></div>
+            <div class="placeholder-image">
+              <img src="agung.png" alt="Agung" />
+            </div>
           </div>
           <div class="intro">
             <h1>Tentang Agung</h1>
@@ -393,7 +414,7 @@
   <script>
     // Navigation and routing
     (function () {
-      const WHATSAPP_COMPONENT_PATH = '/components/whatsapp-button.html';
+      const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
       const DEFAULT_PHONE = '+62 818-0777-9449';
       let waTemplate = null;
       let floatingButton = null;
