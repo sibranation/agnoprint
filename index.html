@@ -580,6 +580,15 @@ Direktur AGNO Grafika Sejahtera</br></br>
       </section>
     </section>
 
+    <!-- Image lightbox modal (used for service previews and gallery) -->
+    <div id="img-modal" class="img-modal" aria-hidden="true" role="dialog" aria-label="Gambar besar">
+      <div class="img-box">
+        <button class="close" aria-label="Tutup">&times;</button>
+        <img src="" alt="" />
+        <div class="caption" aria-hidden="false"></div>
+      </div>
+    </div>
+
     <!-- Books Page -->
     <section id="books" class="page">
       <section class="featured-books">
@@ -914,11 +923,23 @@ Direktur AGNO Grafika Sejahtera</br></br>
       if (modalCaption) modalCaption.textContent = '';
     }
 
+    // existing service-card preview handlers
     document.querySelectorAll('.service-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('.service-actions')) return;
         const src = card.dataset.image;
         const title = card.dataset.title;
+        openServicePreview(src, title);
+      });
+    });
+
+    // new: open modal when clicking images inside the services gallery
+    document.querySelectorAll('.services-gallery img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', (e) => {
+        // prefer the resolved src (img.src), fallback to data-image
+        const src = img.src || img.dataset.image || img.getAttribute('src');
+        const title = img.alt || img.dataset.title || '';
         openServicePreview(src, title);
       });
     });
