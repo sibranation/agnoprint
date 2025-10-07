@@ -125,7 +125,7 @@
     /* Book price styling */
     .book-price {
       font-weight: 700;
-      color: aquamarine;
+      color: cadetblue;
       margin-bottom: 10px;
       margin-top: 8px;
       font-size: 0.98rem;
@@ -158,14 +158,20 @@
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.6;
-      background: linear-gradient(270deg, #f6d365, #fda085, #fbc2eb, #a6c1ee);
-      background-size: 800% 800%;
-      animation: gradientShift 14s linear infinite;
+      background-color: #0f172a; /* base color requested */
+      /* moving overlay (small highlights) — subtle white tints on top of the dark base */
+      background-image: linear-gradient(120deg,
+        rgba(255,255,255,0.02) 0%,
+        rgba(255,255,255,0.045) 40%,
+        rgba(255,255,255,0.02) 60%,
+        rgba(255,255,255,0.01) 100%);
+      background-blend-mode: overlay;
+      background-size: 240% 240%;
+      animation: overlayShift 12s linear infinite;
       overflow: hidden;
     }
 
-    /* soft moving circular lights using pseudo-elements */
+    /* soft moving circular lights using pseudo-elements (kept subtle on dark base) */
     .hero-bg::before,
     .hero-bg::after {
       content: "";
@@ -175,8 +181,8 @@
       top: -20%;
       left: -20%;
       border-radius: 50%;
-      filter: blur(48px);
-      opacity: 0.42;
+      filter: blur(56px);
+      opacity: 0.28; /* reduce intensity on dark base */
       pointer-events: none;
       transform-origin: 50% 50%;
     }
@@ -184,22 +190,22 @@
     /* warm circle cluster */
     .hero-bg::before {
       background:
-        radial-gradient(circle at 30% 35%, rgba(255,220,180,0.65) 0%, rgba(255,200,140,0.24) 25%, transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(250,150,150,0.45) 0%, rgba(250,130,130,0.18) 25%, transparent 60%);
-      animation: floatSlowA 12s ease-in-out infinite;
+        radial-gradient(circle at 30% 35%, rgba(255,220,180,0.10) 0%, rgba(255,200,140,0.06) 25%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(250,150,150,0.08) 0%, rgba(250,130,130,0.04) 25%, transparent 60%);
+      animation: floatSlowA 14s ease-in-out infinite;
     }
 
     /* cool circle cluster */
     .hero-bg::after {
       background:
-        radial-gradient(circle at 60% 20%, rgba(180,220,255,0.5) 0%, rgba(140,190,255,0.2) 24%, transparent 60%),
-        radial-gradient(circle at 15% 78%, rgba(200,230,220,0.35) 0%, rgba(180,220,200,0.12) 30%, transparent 65%);
-      animation: floatSlowB 16s ease-in-out infinite;
-      mix-blend-mode: overlay;
-      opacity: 0.36;
+        radial-gradient(circle at 60% 20%, rgba(180,220,255,0.09) 0%, rgba(140,190,255,0.04) 24%, transparent 60%),
+        radial-gradient(circle at 15% 78%, rgba(200,230,220,0.06) 0%, rgba(180,220,200,0.03) 30%, transparent 65%);
+      animation: floatSlowB 18s ease-in-out infinite;
+      mix-blend-mode: screen;
+      opacity: 0.22;
     }
 
-    @keyframes gradientShift {
+    @keyframes overlayShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -226,13 +232,12 @@
     /* Books layout: vertical cards (image on top, content below) */
     .books-grid {
       display: flex;
-      flex-direction: column;
       gap: 20px;
       align-items: stretch;
     }
     .book-card {
       display: block;
-      width: 100%;
+      width: 250px;
       box-sizing: border-box;
       padding: 0;
       background: #fff;
@@ -257,7 +262,7 @@
       display: block;
       gap: 8px;
     }
-    .book-info h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .book-info h3 { margin: 0 0 8px; font-size: 1.1rem; color: black !important; }
     .book-info p { margin: 0 0 8px; color: #444; }
     .book-info .book-price { margin-top: 8px; }
 
@@ -358,7 +363,6 @@
               <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
               <div class="book-price">Rp. 75.000</div>
               <div style="margin-top:8px;">
-                <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
               </div>
             </div>
           </article>
@@ -372,7 +376,6 @@
               <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
               <div class="book-price">Rp. 85.000</div>
               <div style="margin-top:8px;"></div>
-                <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
               </div>
             </div>
           </article>
