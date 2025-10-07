@@ -124,6 +124,14 @@
       min-width: 220px;
       width: 100%;
     }
+
+    /* Book price styling */
+    .book-price {
+      font-weight: 700;
+      color: #0b2a2e;
+      margin-top: 8px;
+      font-size: 0.98rem;
+    }
   </style>
 </head>
 <body>
@@ -184,6 +192,7 @@
             </div>
             <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
             <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
+            <div class="book-price">Rp. 75.000</div>
             <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
           </article>
           <article class="book-card">
@@ -192,6 +201,7 @@
             </div>
             <h3>Guru Sejarah yang Mencerdaskan</h3>
             <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
+            <div class="book-price">Rp. 85.000</div>
             <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
           </article>
         </div>
@@ -357,103 +367,29 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
     <!-- Books Page -->
     <section id="books" class="page">
-      <section class="books">
-        <div class="books-header">
-          <h1>Buku Saya</h1>
-          <p>Jelajahi koleksi cerita saya yang menggali kedalaman pengalaman manusia</p>
-        </div>
-
+      <section class="featured-books">
+        <h2>Buku Unggulan</h2>
         <div class="books-grid">
-          <article class="book-card featured">
-            <div class="book-cover"></div>
-            <div class="book-info">
-              <h3>Echoes of Dawn</h3>
-              <p class="genre">Fiksi Kontemporer</p>
-              <p>Sebuah novel bercahaya tentang memori, migrasi, dan makna rumah. Pemenang Penghargaan Sastra untuk Suara Baru.</p>
-              <div class="book-details">
-                <span>📖 320 halaman</span>
-                <span>⭐ 4.8/5 Goodreads</span>
-                <span>🏆 Pemenang Penghargaan</span>
-              </div>
-              <div class="book-links">
-                <a href="#" class="btn primary small">Beli Sekarang</a>
-                <a href="#" class="btn small">Baca Contoh</a>
-              </div>
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
             </div>
+            <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
+            <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
+            <div class="book-price">Rp. 75.000</div>
+            <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
           </article>
 
           <article class="book-card">
-            <div class="book-cover"></div>
-            <div class="book-info">
-              <h3>Maps for the Heart</h3>
-              <p class="genre">Non-Fiksi Naratif</p>
-              <p>Esai-intim tentang kreativitas, duka, dan menemukan suara Anda di tengah kekacauan kehidupan modern.</p>
-              <div class="book-details">
-                <span>📖 240 halaman</span>
-                <span>⭐ 4.6/5 Goodreads</span>
-              </div>
-              <div class="book-links">
-                <a href="#" class="btn primary small">Beli Sekarang</a>
-                <a href="#" class="btn small">Baca Contoh</a>
-              </div>
+            <div class="book-cover">
+              <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
             </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover"></div>
-            <div class="book-info">
-              <h3>The Quiet River</h3>
-              <p class="genre">Thriller Sastra</p>
-              <p>Sebuah thriller sastra yang tegang berlatar kota pesisir berkabut dimana rahasia menolak untuk terkubur.</p>
-              <div class="book-details">
-                <span>📖 280 halaman</span>
-                <span>⭐ 4.7/5 Goodreads</span>
-              </div>
-              <div class="book-links">
-                <a href="#" class="btn primary small">Beli Sekarang</a>
-                <a href="#" class="btn small">Baca Contoh</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="book-card upcoming">
-            <div class="book-cover"></div>
-            <div class="book-info">
-              <h3>Whispers in the Wind</h3>
-              <p class="genre">Segera Hadir</p>
-              <p>Kumpulan cerpen yang mengeksplorasi koneksi tak terlihat antar orang asing di kota yang sibuk.</p>
-              <div class="book-details">
-                <span>📖 ~200 halaman</span>
-                <span>📅 Musim Semi 2025</span>
-              </div>
-              <div class="book-links">
-                <a href="#" class="btn small">Pre-order</a>
-              </div>
-            </div>
+            <h3>Guru Sejarah yang Mencerdaskan</h3>
+            <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
+            <div class="book-price">Rp. 85.000</div>
+            <a href="#books" onclick="navigateTo('books')" class="btn small">Baca Selengkapnya</a>
           </article>
         </div>
-
-        <section class="book-stats">
-          <h2>Dalam Angka</h2>
-          <div class="stats-grid">
-            <div class="stat">
-              <div class="number">50K+</div>
-              <div class="label">Buku Terjual</div>
-            </div>
-            <div class="stat">
-              <div class="number">15+</div>
-              <div class="label">Negara Tercapai</div>
-            </div>
-            <div class="stat">
-              <div class="number">4.7</div>
-              <div class="label">Rating Rata-rata</div>
-            </div>
-            <div class="stat">
-              <div class="number">3</div>
-              <div class="label">Penghargaan</div>
-            </div>
-          </div>
-        </section>
       </section>
     </section>
 
