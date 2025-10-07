@@ -150,6 +150,40 @@
       .home-gallery { gap: 8px; }
       .home-gallery img { width: 100px; height: 66px; }
     }
+
+    /* Hero background slider (full-bleed, low opacity behind text) */
+    .hero { position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .hero-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .hero-bg img.active { opacity: 1; }
+    .hero-content { position: relative; z-index: 1; }
+
+    /* Books grid: limit book card width to max 240px */
+    .books-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+    .book-card {
+      flex: 0 0 240px;
+      max-width: 240px;
+      box-sizing: border-box;
+    }
   </style>
 </head>
 <body>
@@ -183,6 +217,11 @@
     <!-- Home Page -->
     <section id="home" class="page active">
       <section class="hero">
+        <!-- hero background slider (images resolved by resolver) -->
+        <div class="hero-bg" aria-hidden="true">
+          <img src="assets/home/home-1.jpeg" data-filename="home-1.jpeg" alt="Home background 1" />
+          <img src="assets/home/home-2.jpeg" data-filename="home-2.jpeg" alt="Home background 2" />
+        </div>
         <div class="hero-content">
           <div class="text">
             <h1>Halo, saya <span class="accent">Agung</span></h1>
@@ -197,7 +236,8 @@
             <div class="placeholder-image">
               <img src="agung.png" data-filename="agung.png" alt="Agung" />
             </div>
-            <div class="home-gallery" aria-hidden="false">
+            <!-- thumbnails kept optional (hidden if you prefer); can be removed -->
+            <div class="home-gallery" aria-hidden="true" style="display:none">
               <img src="assets/home/home-1.jpeg" data-filename="home-1.jpeg" alt="Home image 1" />
               <img src="assets/home/home-2.jpeg" data-filename="home-2.jpeg" alt="Home image 2" />
             </div>
@@ -473,314 +513,273 @@ Direktur AGNO Grafika Sejahtera</br></br>
   </footer>
 
   <script>
-    // Navigation and routing
-    (function () {
-      const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
-      const DEFAULT_PHONE = '+62 818-0777-9449';
-      let waTemplate = null;
-      let floatingButton = null;
+  // Cleaned app script: navigation, assets resolver, WhatsApp buttons, modal.
+  (function () {
+    const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
+    const DEFAULT_PHONE = '+62 818-0777-9449';
+    let waTemplate = null;
+    let floatingButton = null;
 
-      // Resolve images by trying a list of likely folders and picking the first that loads.
-      function tryLoad(srcList) {
-        return new Promise(resolve => {
-          let i = 0;
-          function next() {
-            if (i >= srcList.length) return resolve(null);
-            const img = new Image();
-            const src = srcList[i++];
-            img.onload = () => resolve(src);
-            img.onerror = () => next();
-            img.src = src;
-          }
-          next();
-        });
-      }
-
-      async function resolveAllImages() {
-        const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
-
-        // img elements using data-filename
-        const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
-        await Promise.all(byFilename.map(async el => {
-          const name = el.dataset.filename;
-          if (!name) return;
-          const candidates = prefixes.map(p => p + name);
-          const found = await tryLoad(candidates);
-        return new Promise(resolve => {
-          let i = 0;
-          function next() {
-            if (i >= srcList.length) return resolve(null);
-            const img = new Image();
-            const src = srcList[i++];
-            img.onload = () => resolve(src);
-            img.onerror = () => next();
-            img.src = src;
-          }
-          next();
-        });
-      }
-
-      async function resolveAllImages() {
-        const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
-
-        // img elements using data-filename
-        const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
-        await Promise.all(byFilename.map(async el => {
-          const name = el.dataset.filename;
-          if (!name) return;
-          const candidates = prefixes.map(p => p + name);
-          const found = await tryLoad(candidates);
-          if (found) el.src = found;
-        }));
-
-        // img elements using data-image (services previews or cards)
-        const byDataImage = Array.from(document.querySelectorAll('img[data-image]'));
-        await Promise.all(byDataImage.map(async el => {
-          const data = el.dataset.image; // may include subfolder
-          if (!data) return;
-          const basename = data.split('/').pop();
-          // try the exact data first, then prefixes + basename
-          const candidates = [data, ...prefixes.map(p => p + basename), ...prefixes.map(p => p + data)];
-          const uniqueCandidates = [...new Set(candidates)];
-          const found = await tryLoad(uniqueCandidates);
-          if (found) el.src = found;
-        }));
-      }
-
-      // Load component template
-      function loadWhatsAppTemplate() {
-        // Prefer the in-document template (this avoids fetch problems on some hosts)
-        if (!waTemplate) {
-          // fallback simple element
-          const a = document.createElement('a');
-          a.className = 'whatsapp-order btn small ' + extraClass;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.href = buildWhatsAppHref(phone, message);
-          a.textContent = '✆ Order via WhatsApp';
-          return a;
+    // --- Utilities: image resolver ---
+    function tryLoad(srcList) {
+      return new Promise(resolve => {
+        let i = 0;
+        function next() {
+          if (i >= srcList.length) return resolve(null);
+          const img = new Image();
+          const src = srcList[i++];
+          img.onload = () => resolve(src);
+          img.onerror = () => next();
+          img.src = src;
         }
-        const node = waTemplate.content.firstElementChild.cloneNode(true);
-        node.classList.add(...(extraClass ? extraClass.split(' ') : []));
-        node.href = buildWhatsAppHref(phone, message);
-        node.setAttribute('aria-label', message || 'Order via WhatsApp');
-        return node;
-      }
+        next();
+      });
+    }
 
-      function buildWhatsAppHref(phone, message) {
-        const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
-        const text = message ? `?text=${encodeURIComponent(message)}` : '';
-        return `https://wa.me/${clean}${text}`;
-      }
+    async function resolveAllImages() {
+      const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
 
-      // Append WhatsApp order buttons to each book-card
-      function attachOrderButtonsToBooks() {
-        document.querySelectorAll('.book-card').forEach(card => {
-          if (card.dataset.waAdded) return;
-          // Try to find title
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          a.href = buildWhatsAppHref(phone, message);
-          a.textContent = '✆ Order via WhatsApp';
-          return a;
-        }
-        const node = waTemplate.content.firstElementChild.cloneNode(true);
-        node.classList.add(...(extraClass ? extraClass.split(' ') : []));
-        node.href = buildWhatsAppHref(phone, message);
-        node.setAttribute('aria-label', message || 'Order via WhatsApp');
-        return node;
-      }
+      const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
+      await Promise.all(byFilename.map(async el => {
+        const name = el.dataset.filename;
+        if (!name) return;
+        const candidates = prefixes.map(p => p + name);
+        const found = await tryLoad(candidates);
+        if (found) el.src = found;
+      }));
 
-      function buildWhatsAppHref(phone, message) {
-        const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
-        const text = message ? `?text=${encodeURIComponent(message)}` : '';
-        return `https://wa.me/${clean}${text}`;
-      }
+      const byDataImage = Array.from(document.querySelectorAll('img[data-image]'));
+      await Promise.all(byDataImage.map(async el => {
+        const data = el.dataset.image;
+        if (!data) return;
+        const basename = data.split('/').pop();
+        const candidates = [data, ...prefixes.map(p => p + basename), ...prefixes.map(p => p + data)];
+        const uniqueCandidates = [...new Set(candidates)];
+        const found = await tryLoad(uniqueCandidates);
+        if (found) el.src = found;
+      }));
+    }
 
-      // Append WhatsApp order buttons to each book-card
-      function attachOrderButtonsToBooks() {
-        document.querySelectorAll('.book-card').forEach(card => {
-          if (card.dataset.waAdded) return;
-          // Try to find title
-          const titleEl = card.querySelector('.book-info h3, h3');
-          const title = titleEl ? titleEl.textContent.trim() : 'buku';
-          const message = `Halo, saya ingin memesan buku: ${title}`;
-          const btn = createWhatsAppButton(DEFAULT_PHONE, message);
-          // Place button into .book-links if exists, otherwise append a .book-links container
-          let links = card.querySelector('.book-links');
-          if (links) {
-            links.appendChild(btn);
-          } else {
-            const container = document.createElement('div');
-            container.className = 'book-links';
-            container.appendChild(btn);
-            card.appendChild(container);
-          }
-          card.dataset.waAdded = '1';
+    // --- WhatsApp template loader ---
+    function loadWhatsAppTemplate() {
+      const docTpl = document.getElementById('whatsapp-button-template');
+      if (docTpl) {
+        waTemplate = docTpl;
+        return Promise.resolve();
+      }
+      return fetch(WHATSAPP_COMPONENT_PATH)
+        .then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.text();
+        })
+        .then(html => {
+          const tpl = document.createElement('template');
+          tpl.innerHTML = html.trim();
+          waTemplate = tpl;
+        })
+        .catch(err => {
+          console.warn('Failed to load WhatsApp component:', err);
         });
-      }
+    }
 
-      // Create floating WhatsApp button for the home page
-      function createFloatingWhatsApp() {
-        if (floatingButton) return floatingButton;
-        const msg = 'Halo, saya tertarik dengan karya Anda.';
-        const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
-        btn.classList.add('whatsapp-floating');
-        // Ensure identification
-        btn.id = 'whatsapp-floating-btn';
-        document.body.appendChild(btn);
-        floatingButton = btn;
-        return floatingButton;
-      }
+    function buildWhatsAppHref(phone, message) {
+      const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
+      const text = message ? `?text=${encodeURIComponent(message)}` : '';
+      return `https://wa.me/${clean}${text}`;
+    }
 
-      function updateFloatingWhatsAppVisibility(page) {
-        const btn = document.getElementById('whatsapp-floating-btn');
-        if (!btn) return;
-        if (page === 'home') {
-          btn.classList.remove('hidden');
+    function createWhatsAppButton(phone, message, extraClass = '') {
+      if (!waTemplate) {
+        const a = document.createElement('a');
+        a.className = ('whatsapp-order btn small ' + extraClass).trim();
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.href = buildWhatsAppHref(phone, message);
+        a.textContent = '✆ Order via WhatsApp';
+        return a;
+      }
+      const node = waTemplate.content.firstElementChild.cloneNode(true);
+      if (extraClass) node.classList.add(...extraClass.split(' '));
+      node.href = buildWhatsAppHref(phone, message);
+      node.setAttribute('aria-label', message || 'Order via WhatsApp');
+      return node;
+    }
+
+    // --- Book WhatsApp buttons ---
+    function attachOrderButtonsToBooks() {
+      document.querySelectorAll('.book-card').forEach(card => {
+        if (card.dataset.waAdded) return;
+        const titleEl = card.querySelector('.book-info h3, h3');
+        const title = titleEl ? titleEl.textContent.trim() : 'buku';
+        const message = `Halo, saya ingin memesan buku: ${title}`;
+        const btn = createWhatsAppButton(DEFAULT_PHONE, message);
+        let links = card.querySelector('.book-links');
+        if (links) {
+          links.appendChild(btn);
         } else {
-          btn.classList.add('hidden');
+          const container = document.createElement('div');
+          container.className = 'book-links';
+          container.appendChild(btn);
+          card.appendChild(container);
+        }
+        card.dataset.waAdded = '1';
+      });
+    }
+
+    // --- Floating WhatsApp ---
+    function createFloatingWhatsApp() {
+      if (floatingButton) return floatingButton;
+      const msg = 'Halo, saya tertarik dengan karya Anda.';
+      const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
+      btn.id = 'whatsapp-floating-btn';
+      document.body.appendChild(btn);
+      floatingButton = btn;
+      return floatingButton;
+    }
+
+    function updateFloatingWhatsAppVisibility(page) {
+      const btn = document.getElementById('whatsapp-floating-btn');
+      if (!btn) return;
+      if (page === 'home') btn.classList.remove('hidden');
+      else btn.classList.add('hidden');
+    }
+
+    // --- Navigation / routing ---
+    let currentPage = 'home';
+    const navLinksSelector = '.nav-link';
+    function updateActiveNav(page) {
+      document.querySelectorAll(navLinksSelector).forEach(link => {
+        link.classList.toggle('active', link.dataset.page === page);
+      });
+    }
+
+    function navigateTo(page, pushState = true) {
+      if (!page) page = 'home';
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const el = document.getElementById(page);
+      if (el) el.classList.add('active');
+      if (pushState) {
+        try {
+          history.replaceState(null, '', '#' + page);
+        } catch (e) {
+          window.location.hash = page;
         }
       }
+      // ensure scroll top
+      setTimeout(() => { window.scrollTo(0, 0); }, 0);
+      updateActiveNav(page);
+      currentPage = page;
+      closeMenu();
+      updateFloatingWhatsAppVisibility(page);
+    }
 
-      // Wait for initial load then wire everything
-      window.addEventListener('load', async () => {
-        await loadWhatsAppTemplate();
-      const navLinks = document.querySelectorAll('.nav-link');
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      navLinks.classList.toggle('active');
+      if (toggle) toggle.classList.toggle('active');
+    }
 
-      function navigateTo(page) {
-        // Hide all pages
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        // Show selected page
-        const el = document.getElementById(page);
-        if (el) el.classList.add('active');
-        // Update URL hash
-        window.location.hash = page;
-        // Force viewport to the top after the browser's default anchor jump
-        // the timeout ensures this runs after the browser attempts its automatic scroll
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
-        }, 0);
-        // Update active nav link
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.dataset.page === page) {
-            link.classList.add('active');
-          }
-      let currentPage = 'home';
-      const navLinks = document.querySelectorAll('.nav-link');
+    function closeMenu() {
+      const navLinks = document.getElementById('nav-links');
+      const toggle = document.getElementById('mobile-menu-toggle');
+      navLinks.classList.remove('active');
+      if (toggle) toggle.classList.remove('active');
+    }
 
-      function navigateTo(page) {
-        // Hide all pages
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        // Show selected page
-        const el = document.getElementById(page);
-        if (el) el.classList.add('active');
-        // Update URL hash
-        window.location.hash = page;
-        // Force viewport to the top after the browser's default anchor jump
-        // the timeout ensures this runs after the browser attempts its automatic scroll
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          document.documentElement.scrollTop = 0;
-          document.body.scrollTop = 0;
-        }, 0);
-        // Update active nav link
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.dataset.page === page) {
-            link.classList.add('active');
-          }
-        });
-        currentPage = page;
-        closeMenu();
-        updateFloatingWhatsAppVisibility(page);
-      }
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
+      if (event.target && event.target.reset) event.target.reset();
+    }
 
-      function toggleMenu() {
-        const navLinks = document.getElementById('nav-links');
-        const toggle = document.getElementById('mobile-menu-toggle');
-        navLinks.classList.toggle('active');
-        toggle.classList.toggle('active');
-      }
+    // --- Mutation observer to attach buttons to dynamically added book cards ---
+    const observer = new MutationObserver((mutations) => {
+      let added = false;
+      mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
+      if (added) attachOrderButtonsToBooks();
+    });
 
-      function closeMenu() {
-        const navLinks = document.getElementById('nav-links');
-        const toggle = document.getElementById('mobile-menu-toggle');
-        navLinks.classList.remove('active');
-        toggle.classList.remove('active');
-      }
+    // --- Initialization on load ---
+    window.addEventListener('load', async () => {
+      await loadWhatsAppTemplate();
+      await resolveAllImages().catch(() => {});
+       // start hero slider after images resolved
+       initHeroSlider();
+      attachOrderButtonsToBooks();
+      createFloatingWhatsApp();
+      observer.observe(document.body, { childList: true, subtree: true });
 
-      function handleFormSubmit(event) {
-        event.preventDefault();
-        // Simple form handling - in real app, you'd send to server
-        alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
-        event.target.reset();
-      }
+      // initial navigation based on hash
+      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';
+      navigateTo(hash, false);
+    });
 
-      // Handle initial load and hash changes
-      window.addEventListener('load', () => {
-        const hash = window.location.hash.substring(1) || 'home';
-        navigateTo(hash);
+    window.addEventListener('hashchange', () => {
+      const hash = (window.location.hash || '').replace(/^#/, '');
+      if (hash) navigateTo(hash, false);
+    });
+
+    // Expose globals used by inline attributes
+    window.navigateTo = navigateTo;
+    window.toggleMenu = toggleMenu;
+    window.closeMenu = closeMenu;
+    window.handleFormSubmit = handleFormSubmit;
+
+    // --- Hero slider initializer ---
+    function initHeroSlider() {
+      const slider = document.querySelector('.hero-bg');
+      if (!slider) return;
+      const imgs = Array.from(slider.querySelectorAll('img'));
+      if (!imgs.length) return;
+      let idx = 0;
+      imgs.forEach((img, i) => img.classList.toggle('active', i === 0));
+      // cycle every 4s
+      setInterval(() => {
+        imgs[idx].classList.remove('active');
+        idx = (idx + 1) % imgs.length;
+        imgs[idx].classList.add('active');
+      }, 4000);
+    }
+  })();
+
+  // --- Service preview modal logic (kept separate) ---
+  (function () {
+    const modal = document.getElementById('img-modal');
+    if (!modal) return;
+    const modalImg = modal.querySelector('img');
+    const modalCaption = modal.querySelector('.caption');
+    const closeBtn = modal.querySelector('.close');
+
+    function openServicePreview(src, title) {
+      if (!src) return;
+      modalImg.src = src;
+      modalImg.alt = title || '';
+      modalCaption.textContent = title || '';
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeServicePreview() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+      modalCaption.textContent = '';
+    }
+
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.service-actions')) return;
+        const src = card.dataset.image;
+        const title = card.dataset.title;
+        openServicePreview(src, title);
       });
+    });
 
-      window.addEventListener('hashchange', () => {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          navigateTo(hash);
-        }
-      });
-
-      // Expose navigateTo globally (keeps existing inline onclick handlers working)
-      window.navigateTo = navigateTo;
-      window.toggleMenu = toggleMenu;
-      window.closeMenu = closeMenu;
-      window.handleFormSubmit = handleFormSubmit;
-    })();
-
-    // Service preview modal logic
-    (function () {
-      const modal = document.getElementById('img-modal');
-      const modalImg = modal.querySelector('img');
-      const modalCaption = modal.querySelector('.caption');
-      const closeBtn = modal.querySelector('.close');
-
-      function openServicePreview(src, title) {
-        if (!src) return;
-        modalImg.src = src;
-        modalImg.alt = title || '';
-        modalCaption.textContent = title || '';
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-      }
-
-      function closeServicePreview() {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        modalImg.src = '';
-        modalCaption.textContent = '';
-      }
-
-      // Click handlers on service cards (ignore clicks on action buttons)
-      document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-          if (e.target.closest('.service-actions')) return; // don't open when action clicked
-          const src = card.dataset.image;
-          const title = card.dataset.title;
-          openServicePreview(src, title);
-        });
-      });
-
-      closeBtn.addEventListener('click', closeServicePreview);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeServicePreview();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview();
-      });
-    })();
+    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
+  })();
   </script>
 </body>
 </html>
