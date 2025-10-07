@@ -406,6 +406,10 @@ section {
 .btn.small {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
+  padding: 6px 10px;
+    /* width: 100%; */
+    text-align: center;
+    margin-left: 14px;
 }
 
 .about-content {
