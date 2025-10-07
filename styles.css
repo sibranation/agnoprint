@@ -649,6 +649,7 @@ section {
 .books .book-links {
   display: flex;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .books .btn.small {
