@@ -121,8 +121,8 @@
       justify-content: space-between;
     }
     #contact .contact-info .info-item {
-      flex: 1 1 260px; /* responsive columns */
       min-width: 220px;
+      width: 100%;
     }
   </style>
 </head>
@@ -169,7 +169,7 @@
           </div>
           <div class="hero-image">
             <div class="placeholder-image">
-              <img src="agung.png" alt="Agung" />
+              <img src="agung.png" data-filename="agung.png" alt="Agung" />
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@
         <div class="books-grid">
           <article class="book-card">
             <div class="book-cover">
-              <img src="book-1.jpeg" alt="Sampul Echoes of Dawn" />
+              <img src="book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Echoes of Dawn" />
             </div>
             <h3>Echoes of Dawn</h3>
             <p>Sebuah novel bercahaya tentang memori, migrasi, dan makna rumah.</p>
@@ -188,7 +188,7 @@
           </article>
           <article class="book-card">
             <div class="book-cover">
-              <img src="book-2.jpeg" alt="Sampul Maps for the Heart" />
+              <img src="book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Maps for the Heart" />
             </div>
             <h3>Maps for the Heart</h3>
             <p>Esai-intim tentang kreativitas, duka, dan menemukan suara Anda.</p>
@@ -196,7 +196,7 @@
           </article>
           <article class="book-card">
             <div class="book-cover">
-              <img src="book-1.jpeg" alt="Sampul The Quiet River" />
+              <img src="book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul The Quiet River" />
             </div>
             <h3>The Quiet River</h3>
             <p>Sebuah thriller sastra yang tegang berlatar kota pesisir berkabut.</p>
@@ -220,7 +220,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </div>
           <div class="about-image">
             <div class="placeholder-image">
-              <img src="logo.png" alt="Agung" />
+              <img src="logo.png" data-filename="logo.png" alt="Agung" />
             </div>
           </div>
         </div>
@@ -321,7 +321,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
         <div class="services-grid">
           <article class="service-card" data-image="services/penerbitan.jpg" data-title="Penerbitan Buku">
-            <img class="preview" src="services/penerbitan.jpg" alt="Preview Penerbitan Buku" />
+            <img class="preview" src="services/penerbitan.jpg" data-image="services/penerbitan.jpg" alt="Preview Penerbitan Buku" />
             <h3>Penerbitan Buku</h3>
             <p class="service-features">Editorial, layout, ISBN, produksi cetak dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
             <div class="service-actions"></div>
@@ -331,7 +331,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </article>
 
           <article class="service-card" data-image="services/percetakan.jpg" data-title="Percetakan Komersial">
-            <img class="preview" src="services/percetakan.jpg" alt="Preview Percetakan Komersial" />
+            <img class="preview" src="services/percetakan.jpg" data-image="services/percetakan.jpg" alt="Preview Percetakan Komersial" />
             <h3>Percetakan Komersial</h3>
             <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
             <div class="service-actions">
@@ -341,7 +341,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </article>
 
           <article class="service-card" data-image="services/pengadaan.jpg" data-title="Pengadaan & Perlengkapan Kantor">
-            <img class="preview" src="services/pengadaan.jpg" alt="Preview Pengadaan & Perlengkapan Kantor" />
+            <img class="preview" src="services/pengadaan.jpg" data-image="services/pengadaan.jpg" alt="Preview Pengadaan & Perlengkapan Kantor" />
             <h3>Pengadaan & Perlengkapan Kantor</h3>
             <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
             <div class="service-actions">
@@ -351,7 +351,7 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </article>
 
           <article class="service-card" data-image="services/desain.jpg" data-title="Desain Grafis & Sablon">
-            <img class="preview" src="services/desain.jpg" alt="Preview Desain Grafis & Sablon" />
+            <img class="preview" src="services/desain.jpg" data-image="services/desain.jpg" alt="Preview Desain Grafis & Sablon" />
             <h3>Desain Grafis & Sablon</h3>
             <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
             <div class="service-actions">
@@ -560,6 +560,49 @@ Direktur AGNO Grafika Sejahtera</br></br>
       let waTemplate = null;
       let floatingButton = null;
 
+      // Resolve images by trying a list of likely folders and picking the first that loads.
+      function tryLoad(srcList) {
+        return new Promise(resolve => {
+          let i = 0;
+          function next() {
+            if (i >= srcList.length) return resolve(null);
+            const img = new Image();
+            const src = srcList[i++];
+            img.onload = () => resolve(src);
+            img.onerror = () => next();
+            img.src = src;
+          }
+          next();
+        });
+      }
+
+      async function resolveAllImages() {
+        const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
+
+        // img elements using data-filename
+        const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
+        await Promise.all(byFilename.map(async el => {
+          const name = el.dataset.filename;
+          if (!name) return;
+          const candidates = prefixes.map(p => p + name);
+          const found = await tryLoad(candidates);
+          if (found) el.src = found;
+        }));
+
+        // img elements using data-image (services previews or cards)
+        const byDataImage = Array.from(document.querySelectorAll('img[data-image]'));
+        await Promise.all(byDataImage.map(async el => {
+          const data = el.dataset.image; // may include subfolder
+          if (!data) return;
+          const basename = data.split('/').pop();
+          // try the exact data first, then prefixes + basename
+          const candidates = [data, ...prefixes.map(p => p + basename), ...prefixes.map(p => p + data)];
+          const uniqueCandidates = [...new Set(candidates)];
+          const found = await tryLoad(uniqueCandidates);
+          if (found) el.src = found;
+        }));
+      }
+
       // Load component template
       function loadWhatsAppTemplate() {
         // Prefer the in-document template (this avoids fetch problems on some hosts)
@@ -659,6 +702,8 @@ Direktur AGNO Grafika Sejahtera</br></br>
       // Wait for initial load then wire everything
       window.addEventListener('load', async () => {
         await loadWhatsAppTemplate();
+        // resolve images first so UI shows correct assets
+        await resolveAllImages();
         attachOrderButtonsToBooks();
         createFloatingWhatsApp();
 
