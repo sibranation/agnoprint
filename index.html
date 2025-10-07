@@ -325,6 +325,65 @@
       .service-actions { flex-direction: column; }
       .whatsapp-order.btn.small { text-align:center; }
     }
+
+    /* Add footer styles */
+.footer {
+  background: #071029;
+  color: #dbeafe;
+  padding: 36px 20px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+.footer .footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+.footer .footer-section h4 {
+  margin: 0 0 8px;
+  color: #fff;
+  font-size: 1rem;
+}
+.footer .footer-section p,
+.footer .footer-section li,
+.footer .footer-section a {
+  color: #cfe7ff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-decoration: none;
+}
+.footer .footer-section ul { list-style: none; padding: 0; margin: 0; }
+.footer .footer-section li { margin-bottom: 8px; }
+.footer .footer-section a:hover { text-decoration: underline; color: #fff; }
+.footer .social { display:flex; gap:10px; margin-top:8px; }
+.footer .social a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; background:rgba(255,255,255,0.04); color:#dbeafe; text-decoration:none; }
+.footer-bottom {
+  max-width:1100px;
+  margin: 18px auto 0;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,0.04);
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:0.88rem;
+  color:#9fb7d9;
+}
+.footer .newsletter input[type="email"] {
+  width:100%;
+  padding:8px 10px;
+  border-radius:6px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.02);
+  color:#e6f3ff;
+  box-sizing:border-box;
+}
+@media (max-width:720px) {
+  .footer-bottom { flex-direction:column; align-items:flex-start; gap:8px; }
+}
   </style>
 </head>
 <body>
@@ -663,11 +722,55 @@ Direktur AGNO Grafika Sejahtera</br></br>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Agung</h3>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-section about">
+        <h4>Agno Grafika Sejahtera</h4>
+        <p>Direktur: Drajat Agung Laksono — penerbitan, percetakan, dan desain grafis. Kami membantu penulis independen dan bisnis lokal menerbitkan karya berkualitas.</p>
+        <div class="social" aria-label="Ikuti kami">
+          <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">🔗</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+
+      <div class="footer-section links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home" onclick="navigateTo('home')">Beranda</a></li>
+          <li><a href="#about" onclick="navigateTo('about')">Tentang</a></li>
+          <li><a href="#services" onclick="navigateTo('services')">Jasa</a></li>
+          <li><a href="#books" onclick="navigateTo('books')">Buku</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section services-list">
+        <h4>Jasa</h4>
+        <ul>
+          <li><a href="#services" onclick="navigateTo('services')">Penerbitan</a></li>
+          <li><a href="#services" onclick="navigateTo('services')">Percetakan</a></li>
+          <li><a href="#services" onclick="navigateTo('services')">Pengadaan Kantor</a></li>
+          <li><a href="#services" onclick="navigateTo('services')">Desain &amp; Sablon</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section contact">
+        <h4>Kontak</h4>
+        <p>agung@example.com</p>
+        <p>+62 818 0777 9449</p>
+        <p>Jakarta, Indonesia</p>
+        <div class="newsletter" aria-label="Berlangganan newsletter">
+          <label for="footer-email" style="display:block; font-size:0.9rem; margin-bottom:6px; color:#cfe7ff">Berlangganan</label>
+          <input id="footer-email" type="email" placeholder="Email Anda" />
+        </div>
+      </div>
     </div>
+
+    <div class="footer-bottom">
+      <div>©2025 Agung. Semua hak dilindungi.</div>
+      <div class="legal-links"><a href="/privacy">Kebijakan Privasi</a> · <a href="/terms">Syarat &amp; Ketentuan</a></div>
+    </div>
+  </footer>
 
   <script>
   (function () {
