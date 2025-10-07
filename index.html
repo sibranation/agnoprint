@@ -42,6 +42,32 @@
       object-fit: cover;
       display: block;
     }
+
+    /* Services grid / cards */
+    .services {
+      padding: 40px 20px;
+    }
+    .services-header { text-align: center; margin-bottom: 24px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+    .service-card {
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .service-card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .service-features { font-size: 0.95rem; color:#444; }
+    .service-actions { margin-top: auto; display:flex; gap:8px; }
+    .service-actions a.btn { white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -54,6 +80,7 @@
     <nav class="nav-links" id="nav-links">
       <a href="#home" onclick="navigateTo('home'); closeMenu();" class="nav-link" data-page="home">Beranda</a>
       <a href="#about" onclick="navigateTo('about'); closeMenu();" class="nav-link" data-page="about">Tentang</a>
+      <a href="#services" onclick="navigateTo('services'); closeMenu();" class="nav-link" data-page="services">Jasa</a>
       <a href="#books" onclick="navigateTo('books'); closeMenu();" class="nav-link" data-page="books">Buku</a>
       <a href="#contact" onclick="navigateTo('contact'); closeMenu();" class="nav-link" data-page="contact">Kontak</a>
     </nav>
@@ -75,6 +102,7 @@
             <div class="cta">
               <a href="#books" onclick="navigateTo('books')" class="btn primary">Jelajahi Bukuku</a>
               <a href="#about" onclick="navigateTo('about')" class="btn">Pelajari Lebih Lanjut</a>
+              <a href="#services" onclick="navigateTo('services')" class="btn">Lihat Jasa</a>
             </div>
           </div>
           <div class="hero-image">
@@ -217,6 +245,54 @@ Direktur AGNO Grafika Sejahtera</br></br>
               - Agung
             </p>
           </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- Services Page -->
+    <section id="services" class="page">
+      <section class="services">
+        <div class="services-header">
+          <h1>Jasa Kami</h1>
+          <p>Kami menyediakan layanan lengkap sesuai kebutuhan penerbitan dan percetakan Anda. Pilih layanan untuk melihat detail dan hubungi kami langsung lewat WhatsApp.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <h3>Penerbitan Buku</h3>
+            <p class="service-features">Editorial, layout, ISBN, produksi cetak dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
+            <div class="service-actions">
+              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small" href="#contact" onclick="navigateTo('contact')">Request Quote</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <h3>Percetakan Komersial</h3>
+            <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
+            <div class="service-actions">
+              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Percetakan%20Komersial" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small" href="#contact" onclick="navigateTo('contact')">Request Quote</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <h3>Pengadaan & Perlengkapan Kantor</h3>
+            <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
+            <div class="service-actions">
+              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20pengadaan%20perlengkapan%20kantor" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small" href="#contact" onclick="navigateTo('contact')">Request Quote</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <h3>Desain Grafis & Sablon</h3>
+            <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
+            <div class="service-actions">
+              <a class="btn primary small" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Desain%20Grafis%20dan%20Sablon" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small" href="#contact" onclick="navigateTo('contact')">Request Quote</a>
+            </div>
+          </article>
         </div>
       </section>
     </section>
