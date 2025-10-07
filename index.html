@@ -538,6 +538,13 @@ Direktur AGNO Grafika Sejahtera</br></br>
         if (el) el.classList.add('active');
         // Update URL hash
         window.location.hash = page;
+        // Force viewport to the top after the browser's default anchor jump
+        // the timeout ensures this runs after the browser attempts its automatic scroll
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }, 0);
         // Update active nav link
         navLinks.forEach(link => {
           link.classList.remove('active');
