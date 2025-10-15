@@ -332,6 +332,63 @@
       .whatsapp-order.btn.small { text-align:center; }
     }
 
+    /* Additional content section */
+    .additional-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .additional-content h2 {
+      margin-bottom: 2rem;
+      color: #f1f5f9;
+    }
+
+    .additional-content p {
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .step {
+      background: #1e293b;
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .step h3 {
+      color: #60a5fa;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .step p {
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Add footer styles */
 .footer {
   background: #071029;
@@ -517,6 +574,38 @@ Direktur AGNO Grafika Sejahtera</br></br>
             <cite>- Pengulas Buku</cite>
           </blockquote>
         </div>
+      </section>
+
+      
+
+      <section class="additional-content">
+        <h2>Proses Layanan Kami</h2>
+        <p>AGNO Grafika Sejahtera menawarkan berbagai layanan lengkap yang mencakup semua aspek dari konsep hingga distribusi. Kami memahami bahwa setiap klien memiliki visi unik, dan kami berkomitmen untuk mewujudkan visi tersebut dengan kualitas tertinggi.</p>
+
+        <div class="process-steps">
+          <div class="step">
+            <h3>1. Konsultasi Awal</h3>
+            <p>Kami mulai dengan mendengarkan visi dan tujuan Anda. Diskusi ini membantu kami memahami arah cerita dan target pembaca.</p>
+          </div>
+          <div class="step">
+            <h3>2. Perencanaan & Konsep</h3>
+            <p>Tim kami mengembangkan konsep yang sesuai dengan kebutuhan Anda, memastikan pendekatan yang efektif dan inovatif.</p>
+          </div>
+          <div class="step">
+            <h3>3. Desain & Pengembangan</h3>
+            <p>Desainer kami menciptakan desain yang menarik dan fungsional, yang mencerminkan esensi merek atau proyek Anda.</p>
+          </div>
+          <div class="step">
+            <h3>4. Produksi & Implementasi</h3>
+            <p>Kami menggunakan teknologi modern untuk memastikan kualitas tinggi dan efisiensi dalam proses produksi.</p>
+          </div>
+          <div class="step">
+            <h3>5. Distribusi</h3>
+            <p>Buku Anda didistribusikan ke toko buku, platform online, dan jaringan penjualan kami.</p>
+          </div>
+        </div>
+
+        <p>Dengan pengalaman lebih dari 10 tahun, kami telah membantu ratusan klien mewujudkan impian mereka. Mari kita mulai perjalanan kolaborasi Anda hari ini!</p>
       </section>
 
       <section class="cta-section">
