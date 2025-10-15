@@ -160,16 +160,20 @@
       z-index: 0;
       pointer-events: none;
       background-color: #0f172a; /* base color requested */
-      /* moving overlay (small highlights) — subtle white tints on top of the dark base */
-      background-image: linear-gradient(120deg,
-        rgba(255,255,255,0.02) 0%,
-        rgba(255,255,255,0.045) 40%,
-        rgba(255,255,255,0.02) 60%,
-        rgba(255,255,255,0.01) 100%);
+      /* background image with overlay gradient */
+      background-image: url('assets/home/home-2.jpeg'), linear-gradient(120deg,
+        rgba(255,255,255,0.05) 0%,
+        rgba(255,255,255,0.08) 40%,
+        rgba(255,255,255,0.05) 60%,
+        rgba(255,255,255,0.03) 100%);
       background-blend-mode: overlay;
-      background-size: 240% 240%;
+      background-size: cover, 240% 240%;
+      background-position: center, 0% 50%;
       animation: overlayShift 12s linear infinite;
       overflow: hidden;
+      /* fade to transparent on the right */
+      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
     }
 
     /* soft moving circular lights using pseudo-elements (kept subtle on dark base) */
@@ -235,6 +239,8 @@
       display: flex;
       gap: 20px;
       align-items: stretch;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .book-card {
       display: block;
@@ -445,7 +451,7 @@
       <section class="featured-books">
         <h2>Buku Unggulan</h2>
 
-        <div class="books-grid">
+        <div class="books-grid" style="justify-content: flex-start;">
           <article class="book-card">
             <div class="book-cover">
               <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
@@ -467,6 +473,10 @@
               <div class="book-price">Rp. 85.000</div>
             </div>
           </article>
+        </div>
+
+        <div style="text-align: left; margin-top: 2rem;">
+          <a href="#books" onclick="navigateTo('books')" class="btn primary">Lihat Semua Buku</a>
         </div>
       </section>
 
@@ -667,6 +677,83 @@ Direktur AGNO Grafika Sejahtera</br></br>
             <div class="book-info">
               <h3>Guru Sejarah yang Mencerdaskan</h3>
               <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-3.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Anu Beta Tubat</h3>
+              <p>Praktek gotong royong, dimana beban satu orang sama-sama dipikul, yang dilakukan oleh masyarakat Maybrat di Provinsi Papua Barat</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-4.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Minahasa Wonderland</h3>
+              <p>Negeri mempesona di Bibir Pasifik</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-5.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Bukit Aitumieri</h3>
+              <p>Bukit Aitumieri dan Peradaban di Teluk Wondama</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-6.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Pesan Alam Papua Barat</h3>
+              <p>Keindahan alam yang luar biasa dan kekayaan hayati yang dimilikinya, serta pentingnya menjaga kelestariannya demi keberlanjutan hidup masyarakat setempat</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-7.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Pendidikan Sebagai Ideologi Budaya</h3>
+              <p>Pendidikan bertindak sebagai sistem nilai yang memandu pembentukan karakter dan identitas bangsa, sekaligus berfungsi sebagai alat untuk mewariskan dan mentransformasi budaya dari satu generasi ke generasi berikutnya</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-8.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Papua Barat</h3>
+              <p>Provinsi Indonesia yang terletak di barat laut Provinsi Papua Tengah dan sebelah timur Provinsi Papua Barat Daya</p>
+              <div class="book-price">Rp. 85.000</div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <div class="book-cover">
+              <img src="assets/books/book-9.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
+            </div>
+            <div class="book-info">
+              <h3>Mengembangkan Sumberdaya Secara Berkelanjutan</h3>
+              <p>Memenuhi kebutuhan saat ini tanpa mengorbankan kemampuan generasi mendatang untuk memenuhi kebutuhan mereka sendiri</p>
               <div class="book-price">Rp. 85.000</div>
             </div>
           </article>
