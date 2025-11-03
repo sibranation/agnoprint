@@ -1,10 +1,13 @@
 <!doctype html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <title>AGNO Grafika Sejahtera - Penerbitan Buku, Percetakan, Desain Grafis Jakarta</title>
-  <meta name="description" content="AGNO Grafika Sejahtera - Layanan penerbitan buku, percetakan komersial, pengadaan perlengkapan kantor, dan desain grafis profesional di Jakarta. Lebih dari 10 tahun pengalaman melayani klien di Indonesia.">
-  <meta name="keywords" content="penerbitan buku, percetakan jakarta, desain grafis, sablon t-shirt, pengadaan kantor, cetak offset, percetakan digital, penerbit independen">
+  <meta name="description"
+    content="AGNO Grafika Sejahtera - Layanan penerbitan buku, percetakan komersial, pengadaan perlengkapan kantor, dan desain grafis profesional di Jakarta. Lebih dari 10 tahun pengalaman melayani klien di Indonesia.">
+  <meta name="keywords"
+    content="penerbitan buku, percetakan jakarta, desain grafis, sablon t-shirt, pengadaan kantor, cetak offset, percetakan digital, penerbit independen">
   <meta name="author" content="Drajat Agung Laksono - AGNO Grafika Sejahtera">
   <meta name="robots" content="index, follow">
   <meta name="language" content="Indonesian">
@@ -14,14 +17,16 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://agnoprint.com/">
   <meta property="og:title" content="AGNO Grafika Sejahtera - Penerbitan & Percetakan Profesional">
-  <meta property="og:description" content="Layanan lengkap penerbitan buku, percetakan komersial, desain grafis, dan pengadaan kantor di Jakarta. Lebih dari 10 tahun pengalaman.">
+  <meta property="og:description"
+    content="Layanan lengkap penerbitan buku, percetakan komersial, desain grafis, dan pengadaan kantor di Jakarta. Lebih dari 10 tahun pengalaman.">
   <meta property="og:image" content="https://agnoprint.com/assets/home/banner.jpeg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://agnoprint.com/">
   <meta property="twitter:title" content="AGNO Grafika Sejahtera - Penerbitan & Percetakan Profesional">
-  <meta property="twitter:description" content="Layanan lengkap penerbitan buku, percetakan komersial, desain grafis, dan pengadaan kantor di Jakarta.">
+  <meta property="twitter:description"
+    content="Layanan lengkap penerbitan buku, percetakan komersial, desain grafis, dan pengadaan kantor di Jakarta.">
   <meta property="twitter:image" content="https://agnoprint.com/assets/home/banner.jpeg">
 
   <!-- Canonical URL -->
@@ -80,18 +85,33 @@
       border-radius: 999px;
       background: #25D366;
       color: #fff;
-      box-shadow: 0 6px 18px rgba(37,211,102,0.18);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.18);
       text-decoration: none;
       font-weight: 600;
       transition: transform .12s ease, opacity .12s ease;
     }
-    .whatsapp-floating.hidden { display: none !important; }
-    .whatsapp-order { text-decoration: none; }
+
+    .whatsapp-floating.hidden {
+      display: none !important;
+    }
+
+    .whatsapp-order {
+      text-decoration: none;
+    }
+
     /* adjust small button look if needed */
-    .whatsapp-order.btn.small { padding: 6px 10px;  text-align: center; }
+    .whatsapp-order.btn.small {
+      padding: 6px 10px;
+      text-align: center;
+    }
 
     /* Ensure placeholder images show agung.png correctly */
-    .placeholder-image { overflow: hidden; background: #f3f3f3; display:block; }
+    .placeholder-image {
+      overflow: hidden;
+      background: #f3f3f3;
+      display: block;
+    }
+
     .placeholder-image img {
       width: 100%;
       height: 100%;
@@ -103,33 +123,50 @@
     .services {
       padding: 40px 20px;
     }
-    .services-header { text-align: center; margin-bottom: 24px; }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 16px;
       align-items: start;
     }
+
     .service-card {
       border: 1px solid #e6e6e6;
       border-radius: 8px;
       padding: 16px;
       background: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
-    .service-card h3 { margin: 0 0 6px; font-size: 1.05rem; color: #111; } /* darker title */
+
+    .service-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: #111;
+    }
+
+    /* darker title */
     .service-card .preview {
       width: 100%;
       height: 160px;
       object-fit: cover;
       border-radius: 6px;
-      display:block;
+      display: block;
       margin-bottom: 8px;
     }
-    .service-card { cursor: pointer; }
+
+    .service-card {
+      cursor: pointer;
+    }
+
     /* Modal / lightbox for previews */
     .img-modal {
       position: fixed;
@@ -137,15 +174,37 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.65);
+      background: rgba(0, 0, 0, 0.65);
       z-index: 11000;
       padding: 20px;
       box-sizing: border-box;
     }
-    .img-modal.active { display: flex; }
-    .img-modal .img-box { max-width: 100%; max-height: 100%; position: relative; }
-    .img-modal img { max-width: 100%; max-height: 80vh; border-radius: 8px; display:block; margin: 0 auto; }
-    .img-modal .caption { color: #fff; text-align:center; margin-top: 10px; font-size: 0.95rem; }
+
+    .img-modal.active {
+      display: flex;
+    }
+
+    .img-modal .img-box {
+      max-width: 100%;
+      max-height: 100%;
+      position: relative;
+    }
+
+    .img-modal img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .img-modal .caption {
+      color: #fff;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+
     .img-modal .close {
       position: absolute;
       right: -6px;
@@ -164,6 +223,7 @@
       padding: 32px 20px;
       box-sizing: border-box;
     }
+
     /* Allow the inner contact-info to expand and layout responsively */
     #contact .contact-info {
       max-width: none;
@@ -173,6 +233,7 @@
       align-items: flex-start;
       justify-content: space-between;
     }
+
     #contact .contact-info .info-item {
       min-width: 220px;
       width: 45%;
@@ -194,41 +255,54 @@
       margin-top: 12px;
       align-items: center;
     }
+
     .home-gallery img {
       width: 140px;
       height: 90px;
       object-fit: cover;
       border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       cursor: pointer;
     }
+
     @media (max-width: 600px) {
-      .home-gallery { gap: 8px; }
-      .home-gallery img { width: 100px; height: 66px; }
+      .home-gallery {
+        gap: 8px;
+      }
+
+      .home-gallery img {
+        width: 100px;
+        height: 66px;
+      }
     }
 
     /* Hero background: animated infinite linear gradient + moving blurred circle gradients */
-    .hero { position: relative; overflow: hidden; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background-color: #0f172a; /* base color requested */
+      background-color: #0f172a;
+      /* base color requested */
       /* background image with overlay gradient */
       background-image: url('assets/home/home-2.jpeg'), linear-gradient(120deg,
-        rgba(255,255,255,0.05) 0%,
-        rgba(255,255,255,0.08) 40%,
-        rgba(255,255,255,0.05) 60%,
-        rgba(255,255,255,0.03) 100%);
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(255, 255, 255, 0.08) 40%,
+          rgba(255, 255, 255, 0.05) 60%,
+          rgba(255, 255, 255, 0.03) 100%);
       background-blend-mode: overlay;
       background-size: cover, 240% 240%;
       background-position: center, 0% 50%;
       animation: overlayShift 12s linear infinite;
       overflow: hidden;
       /* fade to transparent on the right */
-      mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
     }
 
     /* soft moving circular lights using pseudo-elements (kept subtle on dark base) */
@@ -242,7 +316,8 @@
       left: -20%;
       border-radius: 50%;
       filter: blur(56px);
-      opacity: 0.28; /* reduce intensity on dark base */
+      opacity: 0.28;
+      /* reduce intensity on dark base */
       pointer-events: none;
       transform-origin: 50% 50%;
     }
@@ -250,44 +325,83 @@
     /* warm circle cluster */
     .hero-bg::before {
       background:
-        radial-gradient(circle at 30% 35%, rgba(255,220,180,0.10) 0%, rgba(255,200,140,0.06) 25%, transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(250,150,150,0.08) 0%, rgba(250,130,130,0.04) 25%, transparent 60%);
+        radial-gradient(circle at 30% 35%, rgba(255, 220, 180, 0.10) 0%, rgba(255, 200, 140, 0.06) 25%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(250, 150, 150, 0.08) 0%, rgba(250, 130, 130, 0.04) 25%, transparent 60%);
       animation: floatSlowA 14s ease-in-out infinite;
     }
 
     /* cool circle cluster */
     .hero-bg::after {
       background:
-        radial-gradient(circle at 60% 20%, rgba(180,220,255,0.09) 0%, rgba(140,190,255,0.04) 24%, transparent 60%),
-        radial-gradient(circle at 15% 78%, rgba(200,230,220,0.06) 0%, rgba(180,220,200,0.03) 30%, transparent 65%);
+        radial-gradient(circle at 60% 20%, rgba(180, 220, 255, 0.09) 0%, rgba(140, 190, 255, 0.04) 24%, transparent 60%),
+        radial-gradient(circle at 15% 78%, rgba(200, 230, 220, 0.06) 0%, rgba(180, 220, 200, 0.03) 30%, transparent 65%);
       animation: floatSlowB 18s ease-in-out infinite;
       mix-blend-mode: screen;
       opacity: 0.22;
     }
 
     @keyframes overlayShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     @keyframes floatSlowA {
-      0%   { transform: translate3d(0%,0%,0) scale(1); }
-      25%  { transform: translate3d(-6%,-3%,0) scale(1.05); }
-      50%  { transform: translate3d(4%,-6%,0) scale(1.02); }
-      75%  { transform: translate3d(6%,3%,0) scale(0.98); }
-      100% { transform: translate3d(0%,0%,0) scale(1); }
+      0% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+      }
+
+      25% {
+        transform: translate3d(-6%, -3%, 0) scale(1.05);
+      }
+
+      50% {
+        transform: translate3d(4%, -6%, 0) scale(1.02);
+      }
+
+      75% {
+        transform: translate3d(6%, 3%, 0) scale(0.98);
+      }
+
+      100% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+      }
     }
 
     @keyframes floatSlowB {
-      0%   { transform: translate3d(0%,0%,0) scale(1); }
-      20%  { transform: translate3d(5%,6%,0) scale(1.06); }
-      50%  { transform: translate3d(-5%,4%,0) scale(0.98); }
-      80%  { transform: translate3d(-2%,-6%,0) scale(1.03); }
-      100% { transform: translate3d(0%,0%,0) scale(1); }
+      0% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+      }
+
+      20% {
+        transform: translate3d(5%, 6%, 0) scale(1.06);
+      }
+
+      50% {
+        transform: translate3d(-5%, 4%, 0) scale(0.98);
+      }
+
+      80% {
+        transform: translate3d(-2%, -6%, 0) scale(1.03);
+      }
+
+      100% {
+        transform: translate3d(0%, 0%, 0) scale(1);
+      }
     }
 
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
 
     /* Books layout: vertical cards (image on top, content below) */
     .books-grid {
@@ -297,6 +411,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .book-card {
       display: block;
       width: 308px;
@@ -308,29 +423,46 @@
       border: 1px solid #eee;
       overflow: hidden;
     }
+
     .book-cover {
       width: 100%;
-      height: 320px;
+      height: 420px;
       overflow: hidden;
       display: block;
     }
+
     .book-cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .book-info {
       padding: 16px;
       display: block;
       gap: 8px;
     }
-    .book-info h3 { margin: 0 0 8px; font-size: 1.1rem; color: black !important; }
-    .book-info p { margin: 0 0 8px; color: #444; }
-    .book-info .book-price { margin-top: 8px; }
+
+    .book-info h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: black !important;
+    }
+
+    .book-info p {
+      margin: 0 0 8px;
+      color: #444;
+    }
+
+    .book-info .book-price {
+      margin-top: 8px;
+    }
 
     @media (max-width: 800px) {
-      .book-cover { height: 220px; }
+      .book-cover {
+        height: 220px;
+      }
     }
 
     /* Services gallery (bottom of 'Jasa Kami' section) */
@@ -341,6 +473,7 @@
       gap: 12px;
       align-items: center;
     }
+
     .services-gallery img {
       width: 100%;
       height: 120px;
@@ -352,39 +485,74 @@
     }
 
     @media (max-width: 800px) {
-      .book-card { flex-direction: column; }
-      .book-cover { max-width: 100%; flex: 0 0 auto; }
-      .book-info { width: 100%; }
+      .book-card {
+        flex-direction: column;
+      }
+
+      .book-cover {
+        max-width: 100%;
+        flex: 0 0 auto;
+      }
+
+      .book-info {
+        width: 100%;
+      }
     }
 
     /* Improve Services readability & actions */
-    .services { background: transparent; color: #0f172a; }
+    .services {
+      background: transparent;
+      color: #0f172a;
+    }
+
     .service-card {
-      cursor: auto; /* remove full-card click hint */
+      cursor: auto;
+      /* remove full-card click hint */
       color: inherit;
       min-height: 140px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    .service-card h3 { color: #0b1220; } /* ensure dark, readable title */
-    .service-features { color: #334155; line-height: 1.5; }
+
+    .service-card h3 {
+      color: #0b1220;
+    }
+
+    /* ensure dark, readable title */
+    .service-features {
+      color: #334155;
+      line-height: 1.5;
+    }
+
     .service-actions {
       display: flex;
       gap: 10px;
       margin-top: 8px;
       flex-wrap: wrap;
     }
+
     .service-actions a.btn {
       display: inline-block;
       padding: 8px 12px;
       text-decoration: none;
     }
+
     /* keep WA button visible on dark overlay too */
-    .whatsapp-order { background: #25D366; color: #fff; border-radius: 6px; }
+    .whatsapp-order {
+      background: #25D366;
+      color: #fff;
+      border-radius: 6px;
+    }
+
     @media (max-width: 560px) {
-      .service-actions { flex-direction: column; }
-      .whatsapp-order.btn.small { text-align:center; }
+      .service-actions {
+        flex-direction: column;
+      }
+
+      .whatsapp-order.btn.small {
+        text-align: center;
+      }
     }
 
     /* Additional content section */
@@ -416,7 +584,7 @@
 
     .step {
       background: #1e293b;
-      border: 1px solid rgba(148,163,184,0.2);
+      border: 1px solid rgba(148, 163, 184, 0.2);
       border-radius: 0.75rem;
       padding: 2rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -424,7 +592,7 @@
 
     .step:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .step h3 {
@@ -445,76 +613,116 @@
     }
 
     /* Add footer styles */
-.footer {
-  background: #071029;
-  color: #dbeafe;
-  padding: 36px 20px;
-  box-sizing: border-box;
-  margin-top: 40px;
-}
-.footer .footer-grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 22px;
-  align-items: start;
-}
-.footer .footer-section h4 {
-  margin: 0 0 8px;
-  color: #fff;
-  font-size: 1rem;
-}
-.footer .footer-section p,
-.footer .footer-section li,
-.footer .footer-section a {
-  color: #cfe7ff;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-decoration: none;
-}
-.footer .footer-section ul { list-style: none; padding: 0; margin: 0; }
-.footer .footer-section li { margin-bottom: 8px; }
-.footer .footer-section a:hover { text-decoration: underline; color: #fff; }
-.footer .social { display:flex; gap:10px; margin-top:8px; }
-.footer .social a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:6px; background:rgba(255,255,255,0.04); color:#dbeafe; text-decoration:none; }
-.footer-bottom {
-  max-width:1100px;
-  margin: 18px auto 0;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,0.04);
-  display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:space-between;
-  font-size:0.88rem;
-  color:#9fb7d9;
-}
-.footer .newsletter input[type="email"] {
-  width:100%;
-  padding:8px 10px;
-  border-radius:6px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:rgba(255,255,255,0.02);
-  color:#e6f3ff;
-  box-sizing:border-box;
-}
-@media (max-width:720px) {
-  .footer-bottom { flex-direction:column; align-items:flex-start; gap:8px; }
-}
+    .footer {
+      background: #071029;
+      color: #dbeafe;
+      padding: 36px 20px;
+      box-sizing: border-box;
+      margin-top: 40px;
+    }
+
+    .footer .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 22px;
+      align-items: start;
+    }
+
+    .footer .footer-section h4 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .footer .footer-section p,
+    .footer .footer-section li,
+    .footer .footer-section a {
+      color: #cfe7ff;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    .footer .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer .footer-section li {
+      margin-bottom: 8px;
+    }
+
+    .footer .footer-section a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    .footer .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .footer .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      color: #dbeafe;
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 18px auto 0;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: #9fb7d9;
+    }
+
+    .footer .newsletter input[type="email"] {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
+      color: #e6f3ff;
+      box-sizing: border-box;
+    }
+
+    @media (max-width:720px) {
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <!-- Inline WhatsApp button template (fallback / primary source for deployments) -->
   <template id="whatsapp-button-template">
-    <a class="whatsapp-order wa btn small" href="#" target="_blank" rel="noopener noreferrer" aria-label="Order via WhatsApp">
+    <a class="whatsapp-order wa btn small" href="#" target="_blank" rel="noopener noreferrer"
+      aria-label="Order via WhatsApp">
       ✆ Order via WhatsApp
     </a>
   </template>
   <header class="navbar">
     <div class="brand">
       <a href="#home" onclick="navigateTo('home'); closeMenu();">
-        <div class="logo"><img src="logo.png" /></div> Agnoprint
+        <div class="logo"><img src="logo.png" /></div>
       </a>
     </div>
     <nav class="nav-links" id="nav-links">
@@ -539,8 +747,13 @@
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-content">
           <div class="text">
-            <h1>Halo, saya <span class="accent">Agung</span></h1>
-            <p>Direktur AGNO Grafika Sejahtera — perusahaan penerbitan, percetakan, dan desain grafis yang telah melayani klien selama hampir 10 tahun. Kami menyediakan solusi lengkap untuk penerbitan buku, percetakan komersial, pengadaan perlengkapan kantor, dan layanan desain kreatif.</p>
+            <h1>Halo, saya <span class="accent">Drajat Agung Laksono</span></h1>
+            <p>Direktur CV. AGNO GRAFIKA SEJAHTERA.
+              Perusahaan kami bergerak dibidang Penerbitan Buku, Penggandaan Buku,
+              Jasa Design dan Layout, Penjualan buku secara online maupun offline &
+              Pengadaan perlengkapan Kantor. Kami siap membantu dan bekerjasama
+              memberikan solusi terbaik untuk Anda. Komitmen yang terus kami jaga
+              adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI.</p>
             <div class="cta">
               <a href="#books" onclick="navigateTo('books')" class="btn primary">Jelajahi Bukuku</a>
               <a href="#about" onclick="navigateTo('about')" class="btn">Pelajari Lebih Lanjut</a>
@@ -566,33 +779,11 @@
         <div class="books-grid" style="justify-content: flex-start;">
           <article class="book-card">
             <div class="book-cover">
-              <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
+              <img src="assets/books/book-agri.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
             </div>
             <div class="book-info">
-              <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
-              <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
-              <div class="book-price">Rp. 75.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Guru Sejarah yang Mencerdaskan</h3>
-              <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-           <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-3.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Anu Beta Tubat</h3>
-              <p>Praktek gotong royong, dimana beban satu orang sama-sama dipikul, yang dilakukan oleh masyarakat Maybrat di Provinsi Papua Barat</p>
+              <h3>English For Agribusiness</h3>
+              <p>Penulis: Dr. Fahriany, M.Pd</p>
               <div class="book-price">Rp. 85.000</div>
             </div>
           </article>
@@ -608,12 +799,16 @@
           <div class="text">
             <h2>Tentang Agno Grafika Sejahtera</h2>
             <p></p>
-              AGNO GRAFIKA SEJAHTERA telah berjalan hampir 10 Tahun. Menangani secara khusus pekerjaan dibidang Penerbitan Buku, Percetakan, Pengadaan/Kebutuhan Alat Kantor, Fotografi, Bidang Perancang Grafis untuk berbagai kebutuhan dan Sablon T-Shirt. Dengan pengalaman yang cukup panjang kami siap membantu dan bekerja bersama memberikan solusi terbaik untuk Anda. Komitmen yang akan terus kami jaga adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI. 
+            AGNO GRAFIKA SEJAHTERA telah berjalan hampir 10 Tahun. Menangani secara khusus pekerjaan dibidang Penerbitan
+            Buku, Percetakan, Pengadaan/Kebutuhan Alat Kantor, Fotografi, Bidang Perancang Grafis untuk berbagai
+            kebutuhan dan Sablon T-Shirt. Dengan pengalaman yang cukup panjang kami siap membantu dan bekerja bersama
+            memberikan solusi terbaik untuk Anda. Komitmen yang akan terus kami jaga adalah KEPUASAN PELANGGAN ADALAH
+            PRIORITAS KAMI.
             </p>
 
-Salam, </br>
-Drajat Agung Laksono</br>
-Direktur AGNO Grafika Sejahtera</br></br>
+            Salam, </br>
+            Drajat Agung Laksono</br>
+            Direktur AGNO Grafika Sejahtera</br></br>
             <a href="#about" onclick="navigateTo('about')" class="btn primary">Baca Biografi Lengkap</a>
           </div>
           <div class="about-image">
@@ -628,7 +823,8 @@ Direktur AGNO Grafika Sejahtera</br></br>
         <h2>Apa Kata Pembaca</h2>
         <div class="testimonials-grid">
           <blockquote class="testimonial">
-            <p>"Tulisan Agung membawa saya ke dunia lain. Karakternya terasa begitu nyata, dan tema-temanya sangat mengena."</p>
+            <p>"Tulisan Agung membawa saya ke dunia lain. Karakternya terasa begitu nyata, dan tema-temanya sangat
+              mengena."</p>
             <cite>- Pembaca dari Goodreads</cite>
           </blockquote>
           <blockquote class="testimonial">
@@ -644,24 +840,30 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
       <section class="additional-content">
         <h2>Proses Layanan Kami</h2>
-        <p>AGNO Grafika Sejahtera menawarkan berbagai layanan lengkap yang mencakup semua aspek dari konsep hingga distribusi. Kami memahami bahwa setiap klien memiliki visi unik, dan kami berkomitmen untuk mewujudkan visi tersebut dengan kualitas tertinggi.</p>
+        <p>AGNO Grafika Sejahtera menawarkan berbagai layanan lengkap yang mencakup semua aspek dari konsep hingga
+          distribusi. Kami memahami bahwa setiap klien memiliki visi unik, dan kami berkomitmen untuk mewujudkan visi
+          tersebut dengan kualitas tertinggi.</p>
 
         <div class="process-steps">
           <div class="step">
             <h3>1. Konsultasi Awal</h3>
-            <p>Kami mulai dengan mendengarkan visi dan tujuan Anda. Diskusi ini membantu kami memahami arah cerita dan target pembaca.</p>
+            <p>Kami mulai dengan mendengarkan visi dan tujuan Anda. Diskusi ini membantu kami memahami arah cerita dan
+              target pembaca.</p>
           </div>
           <div class="step">
             <h3>2. Perencanaan & Konsep</h3>
-            <p>Tim kami mengembangkan konsep yang sesuai dengan kebutuhan Anda, memastikan pendekatan yang efektif dan inovatif.</p>
+            <p>Tim kami mengembangkan konsep yang sesuai dengan kebutuhan Anda, memastikan pendekatan yang efektif dan
+              inovatif.</p>
           </div>
           <div class="step">
             <h3>3. Desain & Pengembangan</h3>
-            <p>Desainer kami menciptakan desain yang menarik dan fungsional, yang mencerminkan esensi merek atau proyek Anda.</p>
+            <p>Desainer kami menciptakan desain yang menarik dan fungsional, yang mencerminkan esensi merek atau proyek
+              Anda.</p>
           </div>
           <div class="step">
             <h3>4. Produksi & Implementasi</h3>
-            <p>Kami menggunakan teknologi modern untuk memastikan kualitas tinggi dan efisiensi dalam proses produksi.</p>
+            <p>Kami menggunakan teknologi modern untuk memastikan kualitas tinggi dan efisiensi dalam proses produksi.
+            </p>
           </div>
           <div class="step">
             <h3>5. Distribusi</h3>
@@ -669,29 +871,35 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </div>
         </div>
 
-        <p>Dengan pengalaman lebih dari 10 tahun, kami telah membantu ratusan klien mewujudkan impian mereka. Mari kita mulai perjalanan kolaborasi Anda hari ini!</p>
+        <p>Dengan pengalaman lebih dari 10 tahun, kami telah membantu ratusan klien mewujudkan impian mereka. Mari kita
+          mulai perjalanan kolaborasi Anda hari ini!</p>
       </section>
 
       <section class="additional-content">
         <h2>Kenapa Memilih AGNO Grafika Sejahtera?</h2>
-        <p>Kami telah melayani klien dari berbagai sektor selama lebih dari satu dekade. Berikut adalah beberapa alasan mengapa kami menjadi pilihan utama untuk kebutuhan penerbitan dan percetakan Anda.</p>
+        <p>Kami telah melayani klien dari berbagai sektor selama lebih dari satu dekade. Berikut adalah beberapa alasan
+          mengapa kami menjadi pilihan utama untuk kebutuhan penerbitan dan percetakan Anda.</p>
 
         <div class="process-steps">
           <div class="step">
             <h3>🎯 Fokus pada Kualitas</h3>
-            <p>Setiap proyek kami melalui proses quality control yang ketat untuk memastikan hasil akhir memenuhi standar tertinggi.</p>
+            <p>Setiap proyek kami melalui proses quality control yang ketat untuk memastikan hasil akhir memenuhi
+              standar tertinggi.</p>
           </div>
           <div class="step">
             <h3>⚡ Pengiriman Tepat Waktu</h3>
-            <p>Kami memahami pentingnya deadline. Tim kami bekerja efisien untuk memastikan proyek selesai sesuai jadwal yang disepakati.</p>
+            <p>Kami memahami pentingnya deadline. Tim kami bekerja efisien untuk memastikan proyek selesai sesuai jadwal
+              yang disepakati.</p>
           </div>
           <div class="step">
             <h3>💡 Inovasi & Teknologi Modern</h3>
-            <p>Kami terus mengikuti perkembangan teknologi terbaru untuk memberikan solusi yang inovatif dan efisien.</p>
+            <p>Kami terus mengikuti perkembangan teknologi terbaru untuk memberikan solusi yang inovatif dan efisien.
+            </p>
           </div>
           <div class="step">
             <h3>🤝 Pendekatan Personal</h3>
-            <p>Setiap klien mendapat perhatian khusus. Kami mendengarkan kebutuhan Anda dan memberikan solusi yang disesuaikan.</p>
+            <p>Setiap klien mendapat perhatian khusus. Kami mendengarkan kebutuhan Anda dan memberikan solusi yang
+              disesuaikan.</p>
           </div>
           <div class="step">
             <h3>🏆 Pengalaman Terbukti</h3>
@@ -703,13 +911,15 @@ Direktur AGNO Grafika Sejahtera</br></br>
           </div>
         </div>
 
-        <p>Bergabunglah dengan klien-klien kami yang telah puas dengan layanan AGNO Grafika Sejahtera. Mari kita wujudkan proyek Anda bersama!</p>
+        <p>Bergabunglah dengan klien-klien kami yang telah puas dengan layanan AGNO Grafika Sejahtera. Mari kita
+          wujudkan proyek Anda bersama!</p>
       </section>
 
       <section class="cta-section">
         <h2>Mari Terhubung</h2>
         <p>Tertarik dengan karya saya atau ingin berkolaborasi? Saya ingin mendengar dari Anda.</p>
-        <img src="./assets//home/banner.jpeg" alt="Hubungi Agung" style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+        <img src="./assets//home/banner.jpeg" alt="Hubungi Agung"
+          style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
         <a href="#contact" onclick="navigateTo('contact')" class="btn primary large">Hubungi Saya</a>
       </section>
     </section>
@@ -719,51 +929,72 @@ Direktur AGNO Grafika Sejahtera</br></br>
       <section class="about">
         <div class="about-header">
           <div class="author-image">
-            <div class="placeholder-image">
-              <img src="agung.png" alt="Agung" />
-            </div>
+            
           </div>
           <div class="intro">
-            <h1>Tentang Agung</h1>
-            <p class="tagline">Direktur AGNO Grafika Sejahtera — spesialis penerbitan, percetakan, dan perancangan grafis</p>
+            <h1>Tentang Kami</h1>
+            <p class="tagline">AGNO Grafika Sejahtera — spesialis penerbitan, percetakan, dan perancangan grafis</p>
           </div>
         </div>
 
         <div class="about-content">
           <div class="bio">
-            <h2>Kisah Saya</h2>
+            <h2>Tentang AGNO Grafika Sejahtera</h2>
             <p>
-              Agung memimpin AGNO Grafika Sejahtera sebagai Direktur sekaligus praktisi penerbitan dan desain dengan pengalaman lebih dari satu dekade.
-              Kariernya dimulai di dunia jurnalistik dan produksi cetak dimana ia menggabungkan keahlian editorial, manajemen produksi, dan desain
-              untuk membantu penulis dan organisasi menerbitkan karya berkualitas.
+              AGNO GRAFIKA SEJAHTERA telah berjalan hampir 10 tahun, perusahaan
+              kami bergerak di penyedia layanan antara lain: Penerbitan Buku,
+              Penggandaan Buku, Jasa Design dan Layout, Penjualan buku secara
+              online maupun offline &amp; Pengadaan perlengkapan Kantor. Dengan
+              pengalaman yang cukup panjang kami siap membantu dan bekerjasama
+              memberikan solusi terbaik untuk Anda. Komitmen yang terus kami jaga
+              adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI.
             </p>
+            <h2>VISI</h2>
             <p></p>
-              Di bawah kepemimpinan AGNO tumbuh dari usaha kecil menjadi mitra terpercaya untuk penerbit independen, sekolah, dan bisnis lokal.
-              Agung aktif membina penulis baru, menyelenggarakan workshop pengembangan naskah, dan menjalankan program literasi komunitas yang menjangkau sekolah-sekolah.
+            Menjadikan perusahaan terkemuka selalu menjadi yang Terdepan &amp;
+            Terpercaya, dengan memberikan kualitas produk dan layanan yang inovatif
+            dan berkualitas unggul.
             </p>
-            <p>
-              Pendekatan praktisnya — menggabungkan estetika desain dengan proses produksi yang efisien — membuatnya dikenal sebagai penghubung
-              antara gagasan kreatif dan produk cetak yang siap edar.
-            </p>
-          </div>
- 
-          <div class="achievements">
-            <h2>Prestasi & Penghargaan</h2>
+            <h2>MISI</h2>
             <ul>
-              <li>📈 Meningkatkan distribusi & cetak bagi 50+ penulis independen sejak 2016</li>
-              <li>🎖 Penghargaan Kewirausahaan Kreatif (2022) — untuk kontribusi pada industri kreatif lokal</li>
-              <li>🎤 Pembicara dan mentor di workshop penulisan & penerbitan (regional)</li>
+              <li>Mewujudkan penerbitan buku yang berkualitas tinggi untuk
+                memenuhi kebutuhan pelanggan kami.</li>
+              <li>Menjadikan penerbitan buku yang dapat diandalkan dalam dunia
+                profesional</li>
+              <li>Menjadikan penerbit yang mudah dan terpercaya untuk memberbitkan buku guru-guru handal dan dosen
+                profesional.</li>
+              <li>Dengan harga yang kompetitif dan layanan yang ramah.</li>
+              <li>Membangun masyarakat yang lebih baik melalui inovasi dan
+                teknologi yang berkelanjutan, dengan memprioritaskan
+                keberlanjutan dan tanggung jawab sosial.</li>
+            </ul>
+          </div>
+
+          <div class="achievements">
+            <h2>Legalitas Perusahaan Kami</h2>
+            <ul>
+              <li><strong>NAMA IZIN: NOMOR INDUK BERUSAHA</strong><br>NOMOR: 0203250002446<br>TANGGAL: 2 MARET 2025<br>INSTANSI PEMBERI IZIN: LEMBAGA PENYELENGGARA OSS</li>
+              <li><strong>NAMA IZIN: NPWP (NOMOR POKOK WAJIB PAJAK)</strong><br>NOMOR: 1000 0000 0052 9261<br>TANGGAL: 1 MARET 2025<br>INSTANSI PEMBERI IZIN: KEMENTERIAN KEUANGAN</li>
+              <li><strong>NAMA IZIN: TER-REGESTRASI SEBAGAI PENERBIT INTERNASIONAL STANDAR BOOK NUMBER (ISBN)</strong><br>TANGGAL: OKTOBER 2025<br>INSTANSI PEMBERI IZIN: PERPUSTAKAAN NASIONAL RI</li>
             </ul>
           </div>
 
           <div class="interests">
-            <h2>Selain Menulis</h2>
+            <h2>Tata Cara Menerbitkan Buku Ber ISBN di AGNO Grafika Sejahtera</h2>
             <p>
-              Di luar menulis, Agung menikmati mendaki di alam, berlatih meditasi kesadaran, dan mengeksplorasi kuliner dunia. Ia bersemangat mendukung program literasi dan rutin menjadi relawan di pusat komunitas lokal.
+              Customer Care kami akan segera menghubungi Anda melalui email dan WA. Customer Care kami akan mengirimkan form surat perjanjian, surat keaslian karya tulis dan surat permohonan ISBN melalui Email.
             </p>
             <p>
-              "Menulis adalah panggilan saya, tetapi terhubung dengan pembaca dan sesama penulis adalah kegembiraan saya."
-              - Agung
+              Setelah melengkapi formulir, silahkan kirim ke kami melalui email di agnoprint85@gmail.com agar bisa kami cek dan cetak. Kami akan mengirimkan surat tersebut yang sudah ditandatangani penerbit melalui pos untuk ditandatangani oleh penulis. setelah tanda tangan lengkap, penulis wajib mengirimkan kembali surat perjanjian, surat keaslian karya tulis dan surat permohonan ISBN kepada kami.
+            </p>
+            <p>
+              Kirimkan Draft Naskah buku yang sudah siap ke email kami agnoprint85@gmail.com. Naskah yang sudah kami terima akan kami proses di Bagian Produksi. Rentang proses produksi maksimal 8 pekan yang terdiri dari proses layouting, desain cover, ISBN, sampai cetak sampel. Semua proses ini tidak dikenakan biaya.
+            </p>
+            <p>
+              Sampel/dummy book (soft file/hard file) akan kami kirim (via email/paket) kepada penulis untuk di revisi apakah sudah sesuai atau belum (free). Penulis mengirimkan hasil koreksi beserta poin-poin tambahan (apabila ada revisi).
+            </p>
+            <p>
+              Waktu mencetak mulai dari tertanggal penulis menyatakan bahwa tidak ada revisi kembali pada waktu tersebut. Penjadwalan cetak dan jumlah cetak disesuaikan dengan kebutuhan penulis.
             </p>
           </div>
         </div>
@@ -775,51 +1006,61 @@ Direktur AGNO Grafika Sejahtera</br></br>
       <section class="services">
         <div class="services-header">
           <h1>Jasa Kami</h1>
-          <p>Kami menyediakan layanan lengkap sesuai kebutuhan penerbitan dan percetakan Anda. Pilih layanan untuk melihat detail dan hubungi kami langsung lewat WhatsApp.</p>
+          <p>Kami menyediakan layanan lengkap sesuai kebutuhan penerbitan dan percetakan Anda. Pilih layanan untuk
+            melihat detail dan hubungi kami langsung lewat WhatsApp.</p>
         </div>
 
         <div class="services-grid">
           <article class="service-card" data-title="Penerbitan Buku" aria-label="Penerbitan Buku">
             <div>
-              <h3>Penerbitan Buku</h3>
-              <p class="service-features">Editorial, layout, ISBN, produksi cetak, dan distribusi. Cocok untuk penulis indie hingga penerbit kecil.</p>
+              <h3>1. PENERBITAN BUKU</h3>
+              <p class="service-features">Pengurusan ISBN, Design & Layout, Penggandaan & Penjuanan secara online dan offline.</p>
             </div>
             <div class="service-actions">
               <a class="btn primary small" href="#books" onclick="navigateTo('books')">Lihat Contoh</a>
-              <a class="btn small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small whatsapp-order"
+                href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Penerbitan%20Buku"
+                target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
             </div>
           </article>
 
           <article class="service-card" data-title="Percetakan Komersial" aria-label="Percetakan Komersial">
             <div>
-              <h3>Percetakan Komersial</h3>
-              <p class="service-features">Cetak offset & digital untuk brosur, poster, buku, packaging, dan material promosi dalam skala kecil hingga besar.</p>
+              <h3>2. PERCETAKAN KOMERSIAL</h3>
+              <p class="service-features">Cetak Offset & Digital antara lain : Buku, Packaging, Brosur, Poster, Kalender dll.</p>
             </div>
             <div class="service-actions">
               <a class="btn primary small" href="#percetakan" onclick="navigateTo('percetakan')">Lihat Contoh</a>
-              <a class="btn small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Percetakan%20Komersial" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small whatsapp-order"
+                href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Percetakan%20Komersial"
+                target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
             </div>
           </article>
 
-          <article class="service-card" data-title="Pengadaan & Perlengkapan Kantor" aria-label="Pengadaan & Perlengkapan Kantor">
+          <article class="service-card" data-title="Pengadaan & Perlengkapan Kantor"
+            aria-label="Pengadaan & Perlengkapan Kantor">
             <div>
-              <h3>Pengadaan & Perlengkapan Kantor</h3>
-              <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor, dan kebutuhan operasional untuk bisnis atau acara.</p>
+              <h3>3. PENGADAAN & PERLENGKAPAN KANTOR</h3>
+              <p class="service-features">Solusi pengadaan alat tulis, perlengkapan kantor dan kebutuhan operasional untuk bisnis atau acara.</p>
             </div>
             <div class="service-actions">
               <a class="btn primary small" href="#pengadaan" onclick="navigateTo('pengadaan')">Lihat Contoh</a>
-              <a class="btn small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20pengadaan%20perlengkapan%20kantor" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small whatsapp-order"
+                href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20pengadaan%20perlengkapan%20kantor"
+                target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
             </div>
           </article>
 
           <article class="service-card" data-title="Desain Grafis & Sablon" aria-label="Desain Grafis & Sablon">
             <div>
-              <h3>Desain Grafis & Sablon</h3>
-              <p class="service-features">Desain cover buku, materi pemasaran, branding, dan sablon T-shirt — dari konsep hingga produksi.</p>
+              <h3>4. JASA DESIGN & LAYOUT</h3>
+              <p class="service-features">Design cover buku, Brosur, Branding, Materi pemasaran, Packaging dll.</p>
             </div>
             <div class="service-actions">
               <a class="btn primary small" href="#sablon" onclick="navigateTo('sablon')">Lihat Contoh</a>
-              <a class="btn small whatsapp-order" href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Desain%20Grafis%20dan%20Sablon" target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
+              <a class="btn small whatsapp-order"
+                href="https://wa.me/6281807779449?text=Halo%2C%20saya%20ingin%20informasi%20layanan%20Desain%20Grafis%20dan%20Sablon"
+                target="_blank" rel="noopener noreferrer">Hubungi via WhatsApp</a>
             </div>
           </article>
         </div>
@@ -842,99 +1083,17 @@ Direktur AGNO Grafika Sejahtera</br></br>
         <div class="books-grid">
           <article class="book-card">
             <div class="book-cover">
-              <img src="assets/books/book-1.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
+              <img src="assets/books/book-agri.jpeg" data-filename="book-1.jpeg" alt="Sampul Pembelajaran Sejarah" />
             </div>
             <div class="book-info">
-              <h3>Pembelajaran Sejarah yang Mencerdaskan</h3>
-              <p>Suatu Alternatif Menghadapi Ancaman Kehidupan Berbangsa Berlandaskan Ke - Indonesiaan</p>
-              <div class="book-price">Rp. 75.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-2.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Guru Sejarah yang Mencerdaskan</h3>
-              <p>Pendekatan Alternatif dalam Pendidikan serta Pelatihan Guru-guru Sejarah</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-3.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Anu Beta Tubat</h3>
-              <p>Praktek gotong royong, dimana beban satu orang sama-sama dipikul, yang dilakukan oleh masyarakat Maybrat di Provinsi Papua Barat</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-4.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Minahasa Wonderland</h3>
-              <p>Negeri mempesona di Bibir Pasifik</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-5.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Bukit Aitumieri</h3>
-              <p>Bukit Aitumieri dan Peradaban di Teluk Wondama</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-6.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Pesan Alam Papua Barat</h3>
-              <p>Keindahan alam yang luar biasa dan kekayaan hayati yang dimilikinya, serta pentingnya menjaga kelestariannya demi keberlanjutan hidup masyarakat setempat</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-7.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Pendidikan Sebagai Ideologi Budaya</h3>
-              <p>Pendidikan bertindak sebagai sistem nilai yang memandu pembentukan karakter dan identitas bangsa, sekaligus berfungsi sebagai alat untuk mewariskan dan mentransformasi budaya dari satu generasi ke generasi berikutnya</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-8.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Papua Barat</h3>
-              <p>Provinsi Indonesia yang terletak di barat laut Provinsi Papua Tengah dan sebelah timur Provinsi Papua Barat Daya</p>
-              <div class="book-price">Rp. 85.000</div>
-            </div>
-          </article>
-
-          <article class="book-card">
-            <div class="book-cover">
-              <img src="assets/books/book-9.jpeg" data-filename="book-2.jpeg" alt="Sampul Guru Sejarah" />
-            </div>
-            <div class="book-info">
-              <h3>Mengembangkan Sumberdaya Secara Berkelanjutan</h3>
-              <p>Memenuhi kebutuhan saat ini tanpa mengorbankan kemampuan generasi mendatang untuk memenuhi kebutuhan mereka sendiri</p>
+              <h3>English For Agribusiness</h3>
+              <p>Penulis: Dr. Fahriany, M.Pd</p>
+              <p>Cetakan: Oktober 2025</p>
+              <p>Tebal Buku: 156 Halaman</p>
+              <p>Ukuran: 14,8 cm × 21 cm</p>
+              <p>Berat: 250 Gram</p>
+              <p>ISBN: Dalam Proses Pengajuan</p>
+              <p>Stok: Tersedia</p>
               <div class="book-price">Rp. 85.000</div>
             </div>
           </article>
@@ -1066,42 +1225,43 @@ Direktur AGNO Grafika Sejahtera</br></br>
     <section id="contact" class="page">
       <section class="contact">
         <div class="contact-header">
-          <h1>Hubungi Saya</h1>
-          <p>Saya ingin mendengar dari Anda. Baik Anda memiliki pertanyaan tentang buku saya, ingin berdiskusi mengenai menulis, atau tertarik peluang kolaborasi.</p>
+          <h1>KONTAK KAMI</h1>
+          <p>CV. AGNO GRAFIKA SEJAHTERA<br>
+          Kami siap membantu dan bekerjasama memberikan solusi terbaik untuk Anda. Komitmen yang terus kami jaga adalah KEPUASAN PELANGGAN ADALAH PRIORITAS KAMI.</p>
         </div>
 
         <div class="contact-content">
           <div class="contact-info">
-            <h2>Cara Lain untuk Terhubung</h2>
+            <h2>Informasi Kontak</h2>
+            <div class="info-item">
+              <div class="icon">📍</div>
+              <div>
+                <h3>ALAMAT</h3>
+                <p>Jl. Sedap Malam No. 6A RT 005/017, Kel. Pisangan, Kec. Ciputat Timur,<br>Kota Tangerang Selatan, Banten – 15419</p>
+              </div>
+            </div>
             <div class="info-item">
               <div class="icon">📧</div>
               <div>
                 <h3>Email</h3>
-                <p>agung@example.com</p>
+                <p>agnoprint85@gmail.com</p>
               </div>
             </div>
             <div class="info-item">
               <div class="icon">📱</div>
               <div>
+                <h3>KONTAK</h3>
+                <p>Tlp : 0818 0777 9449</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon">📷</div>
+              <div>
                 <h3>Media Sosial</h3>
-                <p>Ikuti saya untuk pembaruan dan konten di balik layar</p>
+                <p>Ikuti kami untuk pembaruan dan informasi terbaru</p>
                 <div class="social-links"> </div>
-                  <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer" aria-label="Instagram — @agno.print">📷 Instagram</a>
-                </div>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="icon">📍</div>
-              <div>
-                <h3>Lokasi</h3>
-                <p>Berdomisili di Jakarta, Indonesia</p>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="icon">📅</div>
-              <div>
-                <h3>Acara</h3>
-                <p>Periksa media sosial saya untuk jadwal tanda tangan buku dan acara berbicara yang akan datang</p>
+                <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer"
+                  aria-label="Instagram — @agno.print">📷 Instagram</a>
               </div>
             </div>
           </div>
@@ -1113,10 +1273,12 @@ Direktur AGNO Grafika Sejahtera</br></br>
   <footer class="footer" role="contentinfo">
     <div class="footer-grid">
       <div class="footer-section about">
-        <h4>Agno Grafika Sejahtera</h4>
-        <p>Direktur: Drajat Agung Laksono — penerbitan, percetakan, dan desain grafis. Kami membantu penulis independen dan bisnis lokal menerbitkan karya berkualitas.</p>
+        <h4>CV. AGNO GRAFIKA SEJAHTERA</h4>
+        <p>Direktur: Drajat Agung Laksono — penerbitan, percetakan, dan desain grafis. Kami membantu penulis independen
+          dan bisnis lokal menerbitkan karya berkualitas.</p>
         <div class="social" aria-label="Ikuti kami">
-          <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+          <a href="https://www.instagram.com/agno.print" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram">📷</a>
           <a href="#" aria-label="Facebook">🔗</a>
           <a href="#" aria-label="Twitter">🐦</a>
         </div>
@@ -1144,279 +1306,281 @@ Direktur AGNO Grafika Sejahtera</br></br>
 
       <div class="footer-section contact">
         <h4>Kontak</h4>
-        <p>agung@example.com</p>
-        <p>+62 818 0777 9449</p>
-        <p>Jakarta, Indonesia</p>
+        <p>agnoprint85@gmail.com</p>
+        <p>0818 0777 9449</p>
+        <p>Jl. Sedap Malam No. 6A<br>Tangerang Selatan, Banten</p>
       </div>
     </div>
 
     <div class="footer-bottom">
       <div>©2025 Agung. Semua hak dilindungi.</div>
-      <div class="legal-links"><a href="/privacy">Kebijakan Privasi</a> · <a href="/terms">Syarat &amp; Ketentuan</a></div>
+      <div class="legal-links"><a href="/privacy">Kebijakan Privasi</a> · <a href="/terms">Syarat &amp; Ketentuan</a>
+      </div>
     </div>
   </footer>
 
   <script>
-  (function () {
-    const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
-    const DEFAULT_PHONE = '+62 818-0777-9449';
-    let waTemplate = null;
-    let floatingButton = null;
+    (function () {
+      const WHATSAPP_COMPONENT_PATH = 'components/whatsapp-button.html';
+      const DEFAULT_PHONE = '+62 818-0777-9449';
+      let waTemplate = null;
+      let floatingButton = null;
 
-    // --- Utilities: image resolver ---
-    function tryLoad(srcList) {
-      return new Promise(resolve => {
-        let i = 0;
-        function next() {
-          if (i >= srcList.length) return resolve(null);
-          const img = new Image();
-          const src = srcList[i++];
-          img.onload = () => resolve(src);
-          img.onerror = () => next();
-          img.src = src;
-        }
-        next();
-      });
-    }
-
-    async function resolveAllImages() {
-      const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
-      const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
-      await Promise.all(byFilename.map(async el => {
-        const name = el.dataset.filename;
-        if (!name) return;
-        const candidates = prefixes.map(p => p + name);
-        const found = await tryLoad(candidates);
-        if (found) el.src = found;
-      }));
-
-      const byDataImage = Array.from(document.querySelectorAll('img[data-image]'));
-      await Promise.all(byDataImage.map(async el => {
-        const data = el.dataset.image;
-        if (!data) return;
-        const basename = data.split('/').pop();
-        const candidates = [data, ...prefixes.map(p => p + basename), ...prefixes.map(p => p + data)];
-        const uniqueCandidates = [...new Set(candidates)];
-        const found = await tryLoad(uniqueCandidates);
-        if (found) el.src = found;
-      }));
-    }
-
-    // --- WhatsApp template loader ---
-    function loadWhatsAppTemplate() {
-      const docTpl = document.getElementById('whatsapp-button-template');
-      if (docTpl) {
-        waTemplate = docTpl;
-        return Promise.resolve();
-      }
-      return fetch(WHATSAPP_COMPONENT_PATH)
-        .then(r => {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.text();
-        })
-        .then(html => {
-          const tpl = document.createElement('template');
-          tpl.innerHTML = html.trim();
-          waTemplate = tpl;
-        })
-        .catch(err => {
-          console.warn('Failed to load WhatsApp component:', err);
+      // --- Utilities: image resolver ---
+      function tryLoad(srcList) {
+        return new Promise(resolve => {
+          let i = 0;
+          function next() {
+            if (i >= srcList.length) return resolve(null);
+            const img = new Image();
+            const src = srcList[i++];
+            img.onload = () => resolve(src);
+            img.onerror = () => next();
+            img.src = src;
+          }
+          next();
         });
-    }
-
-    function buildWhatsAppHref(phone, message) {
-      const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
-      const text = message ? `?text=${encodeURIComponent(message)}` : '';
-      return `https://wa.me/${clean}${text}`;
-    }
-
-    function createWhatsAppButton(phone, message, extraClass = '') {
-      // If template is available and is a <template>, clone it.
-      if (waTemplate && waTemplate.content && waTemplate.content.firstElementChild) {
-        const node = waTemplate.content.firstElementChild.cloneNode(true);
-        if (extraClass) node.classList.add(...extraClass.split(' '));
-        node.href = buildWhatsAppHref(phone, message);
-        node.setAttribute('aria-label', message || 'Order via WhatsApp');
-        node.target = '_blank';
-        node.rel = 'noopener noreferrer';
-        return node;
       }
-      // fallback simple anchor
-      const a = document.createElement('a');
-      a.className = ('whatsapp-order btn small ' + extraClass).trim();
-      a.target = '_blank';
-      a.rel = 'noopener noreferrer';
-      a.href = buildWhatsAppHref(phone, message);
-      a.textContent = '✆ Order via WhatsApp';
-      return a;
-    }
 
-    // --- Add WhatsApp buttons to book cards ---
-    function attachOrderButtonsToBooks() {
-      document.querySelectorAll('.book-card').forEach(card => {
-        if (card.dataset.waAdded) return;
-        const titleEl = card.querySelector('.book-info h3, h3');
-        const title = titleEl ? titleEl.textContent.trim() : 'buku';
-        const message = `Halo, saya ingin memesan buku: ${title}`;
-        const btn = createWhatsAppButton(DEFAULT_PHONE, message);
-        let links = card.querySelector('.book-links');
-        if (links) {
-          links.appendChild(btn);
-        } else {
-          const container = document.createElement('div');
-          container.className = 'book-links';
-          container.appendChild(btn);
-          card.appendChild(container);
-        }
-        card.dataset.waAdded = '1';
-      });
-    }
+      async function resolveAllImages() {
+        const prefixes = ['', 'assets/', 'assets/images/', 'assets/img/', 'images/', 'img/', 'static/', 'assets/services/', 'assets/images/services/'];
+        const byFilename = Array.from(document.querySelectorAll('img[data-filename]'));
+        await Promise.all(byFilename.map(async el => {
+          const name = el.dataset.filename;
+          if (!name) return;
+          const candidates = prefixes.map(p => p + name);
+          const found = await tryLoad(candidates);
+          if (found) el.src = found;
+        }));
 
-    // --- Floating WhatsApp ---
-    function createFloatingWhatsApp() {
-      if (floatingButton) return floatingButton;
-      const msg = 'Halo, saya tertarik dengan karya Anda.';
-      const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
-      btn.id = 'whatsapp-floating-btn';
-      document.body.appendChild(btn);
-      floatingButton = btn;
-      return floatingButton;
-    }
-
-    function updateFloatingWhatsAppVisibility(page) {
-      const btn = document.getElementById('whatsapp-floating-btn');
-      if (!btn) return;
-      if (page === 'home') btn.classList.remove('hidden');
-      else btn.classList.add('hidden');
-    }
-
-    // --- Navigation ---
-    let currentPage = 'home';
-    function updateActiveNav(page) {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.toggle('active', link.dataset.page === page);
-      });
-    }
-
-    function navigateTo(page, pushState = true) {
-      if (!page) page = 'home';
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const el = document.getElementById(page);
-      if (el) el.classList.add('active');
-      if (pushState) {
-        try {
-          history.replaceState(null, '', '#' + page);
-        } catch (e) {
-          window.location.hash = page;
-        }
+        const byDataImage = Array.from(document.querySelectorAll('img[data-image]'));
+        await Promise.all(byDataImage.map(async el => {
+          const data = el.dataset.image;
+          if (!data) return;
+          const basename = data.split('/').pop();
+          const candidates = [data, ...prefixes.map(p => p + basename), ...prefixes.map(p => p + data)];
+          const uniqueCandidates = [...new Set(candidates)];
+          const found = await tryLoad(uniqueCandidates);
+          if (found) el.src = found;
+        }));
       }
-      setTimeout(() => { window.scrollTo(0, 0); }, 0);
-      updateActiveNav(page);
-      currentPage = page;
-      closeMenu();
-      updateFloatingWhatsAppVisibility(page);
-    }
 
-    function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      const toggle = document.getElementById('mobile-menu-toggle');
-      if (navLinks) navLinks.classList.toggle('active');
-      if (toggle) toggle.classList.toggle('active');
-    }
+      // --- WhatsApp template loader ---
+      function loadWhatsAppTemplate() {
+        const docTpl = document.getElementById('whatsapp-button-template');
+        if (docTpl) {
+          waTemplate = docTpl;
+          return Promise.resolve();
+        }
+        return fetch(WHATSAPP_COMPONENT_PATH)
+          .then(r => {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.text();
+          })
+          .then(html => {
+            const tpl = document.createElement('template');
+            tpl.innerHTML = html.trim();
+            waTemplate = tpl;
+          })
+          .catch(err => {
+            console.warn('Failed to load WhatsApp component:', err);
+          });
+      }
 
-    function closeMenu() {
-      const navLinks = document.getElementById('nav-links');
-      const toggle = document.getElementById('mobile-menu-toggle');
-      if (navLinks) navLinks.classList.remove('active');
-      if (toggle) toggle.classList.remove('active');
-    }
+      function buildWhatsAppHref(phone, message) {
+        const clean = (phone || DEFAULT_PHONE).replace(/\D/g, '');
+        const text = message ? `?text=${encodeURIComponent(message)}` : '';
+        return `https://wa.me/${clean}${text}`;
+      }
 
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
-      if (event.target && event.target.reset) event.target.reset();
-    }
+      function createWhatsAppButton(phone, message, extraClass = '') {
+        // If template is available and is a <template>, clone it.
+        if (waTemplate && waTemplate.content && waTemplate.content.firstElementChild) {
+          const node = waTemplate.content.firstElementChild.cloneNode(true);
+          if (extraClass) node.classList.add(...extraClass.split(' '));
+          node.href = buildWhatsAppHref(phone, message);
+          node.setAttribute('aria-label', message || 'Order via WhatsApp');
+          node.target = '_blank';
+          node.rel = 'noopener noreferrer';
+          return node;
+        }
+        // fallback simple anchor
+        const a = document.createElement('a');
+        a.className = ('whatsapp-order btn small ' + extraClass).trim();
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.href = buildWhatsAppHref(phone, message);
+        a.textContent = '✆ Order via WhatsApp';
+        return a;
+      }
 
-    // Observe DOM for added book-cards (in case of dynamic changes)
-    const observer = new MutationObserver((mutations) => {
-      let added = false;
-      mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
-      if (added) attachOrderButtonsToBooks();
-    });
+      // --- Add WhatsApp buttons to book cards ---
+      function attachOrderButtonsToBooks() {
+        document.querySelectorAll('.book-card').forEach(card => {
+          if (card.dataset.waAdded) return;
+          const titleEl = card.querySelector('.book-info h3, h3');
+          const title = titleEl ? titleEl.textContent.trim() : 'buku';
+          const message = `Halo, saya ingin memesan buku: ${title}`;
+          const btn = createWhatsAppButton(DEFAULT_PHONE, message);
+          let links = card.querySelector('.book-links');
+          if (links) {
+            links.appendChild(btn);
+          } else {
+            const container = document.createElement('div');
+            container.className = 'book-links';
+            container.appendChild(btn);
+            card.appendChild(container);
+          }
+          card.dataset.waAdded = '1';
+        });
+      }
 
-    // --- Initialization ---
-    window.addEventListener('load', async () => {
-      await loadWhatsAppTemplate();
-      await resolveAllImages().catch(() => {});
-      attachOrderButtonsToBooks();
-      createFloatingWhatsApp();
-      observer.observe(document.body, { childList: true, subtree: true });
+      // --- Floating WhatsApp ---
+      function createFloatingWhatsApp() {
+        if (floatingButton) return floatingButton;
+        const msg = 'Halo, saya tertarik dengan karya Anda.';
+        const btn = createWhatsAppButton(DEFAULT_PHONE, msg, 'whatsapp-floating');
+        btn.id = 'whatsapp-floating-btn';
+        document.body.appendChild(btn);
+        floatingButton = btn;
+        return floatingButton;
+      }
 
-      const hash = (window.location.hash || '').replace(/^#/, '') || 'home';
-      navigateTo(hash, false);
-    });
+      function updateFloatingWhatsAppVisibility(page) {
+        const btn = document.getElementById('whatsapp-floating-btn');
+        if (!btn) return;
+        if (page === 'home') btn.classList.remove('hidden');
+        else btn.classList.add('hidden');
+      }
 
-    window.addEventListener('hashchange', () => {
-      const hash = (window.location.hash || '').replace(/^#/, '');
-      if (hash) navigateTo(hash, false);
-    });
+      // --- Navigation ---
+      let currentPage = 'home';
+      function updateActiveNav(page) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.toggle('active', link.dataset.page === page);
+        });
+      }
 
-    // Expose for inline handlers
-    window.navigateTo = navigateTo;
-    window.toggleMenu = toggleMenu;
-    window.closeMenu = closeMenu;
-    window.handleFormSubmit = handleFormSubmit;
-  })();
+      function navigateTo(page, pushState = true) {
+        if (!page) page = 'home';
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const el = document.getElementById(page);
+        if (el) el.classList.add('active');
+        if (pushState) {
+          try {
+            history.replaceState(null, '', '#' + page);
+          } catch (e) {
+            window.location.hash = page;
+          }
+        }
+        setTimeout(() => { window.scrollTo(0, 0); }, 0);
+        updateActiveNav(page);
+        currentPage = page;
+        closeMenu();
+        updateFloatingWhatsAppVisibility(page);
+      }
 
-  // --- Service preview modal logic (kept separate) ---
-  (function () {
-    const modal = document.getElementById('img-modal');
-    if (!modal) return;
-    const modalImg = modal.querySelector('img');
-    const modalCaption = modal.querySelector('.caption');
-    const closeBtn = modal.querySelector('.close');
+      function toggleMenu() {
+        const navLinks = document.getElementById('nav-links');
+        const toggle = document.getElementById('mobile-menu-toggle');
+        if (navLinks) navLinks.classList.toggle('active');
+        if (toggle) toggle.classList.toggle('active');
+      }
 
-    function openServicePreview(src, title) {
-      if (!src) return;
-      if (modalImg) modalImg.src = src;
-      if (modalImg) modalImg.alt = title || '';
-      if (modalCaption) modalCaption.textContent = title || '';
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-    }
+      function closeMenu() {
+        const navLinks = document.getElementById('nav-links');
+        const toggle = document.getElementById('mobile-menu-toggle');
+        if (navLinks) navLinks.classList.remove('active');
+        if (toggle) toggle.classList.remove('active');
+      }
 
-    function closeServicePreview() {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      if (modalImg) modalImg.src = '';
-      if (modalCaption) modalCaption.textContent = '';
-    }
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        alert('Terima kasih atas pesan Anda! Saya akan segera menghubungi Anda.');
+        if (event.target && event.target.reset) event.target.reset();
+      }
 
-    // existing service-card preview handlers
-    document.querySelectorAll('.service-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.service-actions')) return;
-        const src = card.dataset.image;
-        const title = card.dataset.title;
-        openServicePreview(src, title);
+      // Observe DOM for added book-cards (in case of dynamic changes)
+      const observer = new MutationObserver((mutations) => {
+        let added = false;
+        mutations.forEach(m => { if (m.addedNodes && m.addedNodes.length) added = true; });
+        if (added) attachOrderButtonsToBooks();
       });
-    });
 
-    // new: open modal when clicking images inside the services gallery
-    document.querySelectorAll('.services-gallery img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', (e) => {
-        // prefer the resolved src (img.src), fallback to data-image
-        const src = img.src || img.dataset.image || img.getAttribute('src');
-        const title = img.alt || img.dataset.title || '';
-        openServicePreview(src, title);
+      // --- Initialization ---
+      window.addEventListener('load', async () => {
+        await loadWhatsAppTemplate();
+        await resolveAllImages().catch(() => { });
+        attachOrderButtonsToBooks();
+        createFloatingWhatsApp();
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        const hash = (window.location.hash || '').replace(/^#/, '') || 'home';
+        navigateTo(hash, false);
       });
-    });
 
-    if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
-  })();
+      window.addEventListener('hashchange', () => {
+        const hash = (window.location.hash || '').replace(/^#/, '');
+        if (hash) navigateTo(hash, false);
+      });
+
+      // Expose for inline handlers
+      window.navigateTo = navigateTo;
+      window.toggleMenu = toggleMenu;
+      window.closeMenu = closeMenu;
+      window.handleFormSubmit = handleFormSubmit;
+    })();
+
+    // --- Service preview modal logic (kept separate) ---
+    (function () {
+      const modal = document.getElementById('img-modal');
+      if (!modal) return;
+      const modalImg = modal.querySelector('img');
+      const modalCaption = modal.querySelector('.caption');
+      const closeBtn = modal.querySelector('.close');
+
+      function openServicePreview(src, title) {
+        if (!src) return;
+        if (modalImg) modalImg.src = src;
+        if (modalImg) modalImg.alt = title || '';
+        if (modalCaption) modalCaption.textContent = title || '';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeServicePreview() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        if (modalImg) modalImg.src = '';
+        if (modalCaption) modalCaption.textContent = '';
+      }
+
+      // existing service-card preview handlers
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.service-actions')) return;
+          const src = card.dataset.image;
+          const title = card.dataset.title;
+          openServicePreview(src, title);
+        });
+      });
+
+      // new: open modal when clicking images inside the services gallery
+      document.querySelectorAll('.services-gallery img').forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', (e) => {
+          // prefer the resolved src (img.src), fallback to data-image
+          const src = img.src || img.dataset.image || img.getAttribute('src');
+          const title = img.alt || img.dataset.title || '';
+          openServicePreview(src, title);
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeServicePreview);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeServicePreview(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeServicePreview(); });
+    })();
   </script>
 </body>
+
 </html>
