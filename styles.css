@@ -72,13 +72,13 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background: #ffffff;
-  color: #0f172a;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #0f172a;
+  color: #e2e8f0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .navbar .brand a {
-  color: #0f172a;
+  color: #e2e8f0;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -104,7 +104,7 @@ section {
 }
 
 .navbar .nav-links a {
-  color: #475569;
+  color: #cbd5e1;
   text-decoration: none;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
@@ -112,13 +112,13 @@ section {
 }
 
 .navbar .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.05);
-  color: #0f172a;
+  background: rgba(148, 163, 184, 0.15);
+  color: #ffffff;
 }
 
 .navbar .nav-links a.active {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: #334155;
+  color: #fff;
 }
 
 .navbar .mobile-menu-toggle {
@@ -133,7 +133,7 @@ section {
 .navbar .mobile-menu-toggle span {
   width: 25px;
   height: 3px;
-  background: #0f172a;
+  background: #e2e8f0;
   margin: 3px 0;
   transition: 0.3s;
   border-radius: 2px;
@@ -149,14 +149,14 @@ section {
     top: 100%;
     left: 0;
     right: 0;
-    background: #ffffff;
+    background: #0f172a;
     flex-direction: column;
     padding: 2rem;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
   }
 
   .navbar .nav-links.active {
